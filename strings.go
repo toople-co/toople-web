@@ -15,11 +15,11 @@ type Strings map[string]map[string]string
 // prepending the strings from "templates/layout.<lang>.strings".
 // This function will panic in case of errors since it is meant to run during initialization only.
 func LoadStrings() Strings {
-	files, err := filepath.Glob("templates/*.*.strings")
+	files, err := filepath.Glob(filepath.FromSlash("templates/*.*.strings"))
 	if err != nil {
 		panic(fmt.Errorf("strings: can't read files in 'templates/'"))
 	}
-	re := regexp.MustCompile(`templates/(\w+)\.(\w+)\.strings`)
+	re := regexp.MustCompile(filepath.FromSlash(`templates/(\w+)\.(\w+)\.strings`))
 	strings := make(Strings)
 	for _, filename := range files {
 		key := re.ReplaceAllString(filename, "$1/$2")
