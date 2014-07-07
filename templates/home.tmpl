@@ -1,0 +1,28 @@
+		<section id="home">
+			{{ with .events }}
+			<ul>
+				{{ range . }}
+					<li class="event">
+						<h3>{{ .Desc }}</h3>
+						<div>
+							<time datetime="{{ .Date }}">{{ .PrettyDate }}</time>
+							@ {{ .Location }}
+						</div>
+						<p>Status: <em>{{ if ge (len .Participants) .Threshold }}Confirmed{{ else }}Pending{{ end }}</em></p>
+						<p>Circles:</p>
+						<ul class="circles">
+							{{ range .Circles }}
+							<li>{{ . }}</li>
+							{{ end }}
+						</ul>
+					</li>
+				{{ end }}
+			</ul>
+			{{ else }}
+			<p>No new invitations or upcoming events.</p>
+			{{ end }}
+			<p>
+				<strong>{{ html .loggedin_text }}</strong>
+				<br><a href="/logout">{{ .logout_button }}</a>
+			</p>
+		</section>

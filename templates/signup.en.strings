@@ -1,0 +1,64 @@
+description
+# The default description to be used in the meta tags
+"Sign up for a Toople account and start scheduling events right away!"
+
+email_section
+# The title of the section for logging in with email and password
+"You can sign up with an email address and a password or just by email:"
+
+email_label
+# The label text for the email input field (visually hidden)
+"Email address"
+
+email_placeholder
+# The placeholder text for the email input field
+"Enter email"
+
+name_label
+# The label text for the name input field (visually hidden)
+"Name"
+
+name_placeholder
+# The placeholder text for the name input field
+"What's your name?"
+
+name_comment
+# The text explaining why we need a name
+"This name will only be shown in the list of participants to an event."
+
+password_label
+# The label text for the password input field (visually hidden)
+"Password (optional)"
+
+password_placeholder
+# The placeholder text for the password input fields
+"Password (optional)"
+
+password_comment
+# The text displayed right after the password field explaining why a password is optional
+"If you don't enter a password, you will need to click a on link that we will send you by email each time you want to log in (only if you have been logged out in the meantime)."
+
+email_submit
+# The text on the submit button for the email and password section
+"Sign up"
+
+openid_section
+# The title of the section for logging in with an OpenID
+"Or you can sign up using any of the following services:"
+
+internal_error
+# The error displayed when the the app is unavailable
+"An error has occurred."
+
+email_error
+# The error displayed when the email is already used
+"This email is already being used by someone. Are you trying to login?"
+
+name_error
+# The error displayed when no name was provided
+"You have to enter a name. Any name. Yours preferably!"
+
+password_error
+# The error displayed when the password sucks
+"This password is terrible. If you suck at choosing strong passwords, why don't you try to sign up without a password or using an OpenID instead?"
+

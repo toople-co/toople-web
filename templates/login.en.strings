@@ -1,0 +1,47 @@
+description
+# The default description to be used in the meta tags
+"Log into your Toople account"
+
+email_section
+# The title of the section for logging in with email and password or email only
+"You can log in with an email address and a password or just by email:"
+
+email_label
+# The label text for the email input field (visually hidden)
+"Email address"
+
+email_placeholder
+# The placeholder text for the email input field
+"Enter email"
+
+password_label
+# The label text for the password input field (visually hidden)
+"Password (optional)"
+
+password_placeholder
+# The placeholder text for the password input field
+"Password (optional)"
+
+password_comment
+# The text displayed right after the password field explaining why a password is optional
+"If you don't enter a password, you will need to click a on link that we will send you by email to log in."
+
+email_submit
+# The text on the submit button for the email and password section
+"Log in"
+
+openid_section
+# The title of the section for logging in with an OpenID
+"Or you can use any of the following services to log in:"
+
+internal_error
+# The error displayed when the the app is unavailable
+"An error has occurred."
+
+email_error
+# The error displayed when the email does not correspond to any user
+"There is no user matching this email address. Did you use this one when you signed up?"
+
+auth_error
+# The error displayed when the email/password pair didn't match any user
+"The email address or password you entered is incorrect."

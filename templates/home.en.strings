@@ -1,0 +1,8 @@
+loggedin_text
+# The text that explains that you are logged in
+# Use `%s` as a placeholder for the user's name
+"You are logged in as “%s”."
+
+logout_button
+# The text on the log out button
+"Log out"

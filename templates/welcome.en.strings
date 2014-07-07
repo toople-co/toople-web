@@ -1,0 +1,21 @@
+description
+# The content of the description meta tag
+"The easiest way to schedule events requiring a minimum number of participants"
+
+subhead
+# The short introductory text
+"The easiest way to schedule events requiring a minimum number of participants"
+
+caption
+# The alt text for the image explaining how Toople works
+"Cartoon explaining how Toople works"
+
+signup_button
+# The text on the sign up button
+"Sign up"
+
+signup_comment
+# The text next to the sign up button explaining the different sign up options
+"Psst… You don't have to create yet another password to sign up.
+				You can use an OpenID like Google, Twitter and Facebook.
+				You can even sign up by email without creating a password."

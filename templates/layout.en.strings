@@ -1,0 +1,19 @@
+name
+# The name of the brand
+"Toople"
+
+description
+# The default description to be used in the meta tags
+"The easiest way to schedule events requiring a minimum number of participants"
+
+about
+# The text of the link the the /about page in the footer
+"Learn more about Toople"
+
+contact
+# The text of the contact link in the footer
+"Send us an email"
+
+source
+# The text of the link to the Github repository in the footer
+"Contribute on Github"
