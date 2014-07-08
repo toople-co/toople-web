@@ -47,11 +47,9 @@ func main() {
 	m.Use(render.Renderer(render.Options{Layout: "layout"}))
 	m.Use(sessions.Sessions("session", sessions.NewCookieStore([]byte("secret123"))))
 
-	strings := LoadStrings()
-
 	m.Get("/", func(r render.Render, s sessions.Session) {
 		if id := s.Get("user"); id != nil {
-			view := NewView(strings["home/en"])
+			view := NewView("home", "en")
 			user, err := dba.GetUser(id.(db.UserId))
 			if err != nil {
 				view["error"] = view["internal_error"]
@@ -66,7 +64,7 @@ func main() {
 			view["events"] = events
 			r.HTML(200, "home", view)
 		} else {
-			view := NewView(strings["welcome/en"])
+			view := NewView("welcome", "en")
 			view["login_button"] = true
 			r.HTML(200, "welcome", view)
 		}
@@ -77,7 +75,7 @@ func main() {
 			r.Redirect("/")
 			return
 		}
-		view := NewView(strings["login/en"])
+		view := NewView("login", "en")
 		if email := s.Get("email"); email != nil {
 			view["email"] = email
 		}
@@ -118,7 +116,7 @@ func main() {
 			r.Redirect("/")
 			return
 		}
-		view := NewView(strings["signup/en"])
+		view := NewView("signup", "en")
 		view["login_button"] = true
 		if email := s.Get("email"); email != nil {
 			view["email"] = email
