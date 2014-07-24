@@ -1,28 +1,35 @@
 		<section id="home">
-			{{ with .events }}
+		{{ with .error}}
+			<p><strong style="color:#fcc;">{{ . }}</strong></p>
+		{{ end }}
+		{{ with .feed }}
 			<ul>
-				{{ range . }}
+			{{ range . }}
+				{{ with .Event }}
 					<li class="event">
-						<h3>{{ .Desc }}</h3>
+						<a role="button" href="/dismiss" title="Not available/interested">✕</a>
+						<h3>{{ .Title }}</h3>
 						<div>
 							<time datetime="{{ .Date }}">{{ .PrettyDate }}</time>
 							@ {{ .Location }}
 						</div>
-						<p>Status: <em>{{ if ge (len .Participants) .Threshold }}Confirmed{{ else }}Pending{{ end }}</em></p>
-						<p>Circles:</p>
-						<ul class="circles">
-							{{ range .Circles }}
-							<li>{{ . }}</li>
-							{{ end }}
-						</ul>
+						{{ with .Info }}<p>{{ . }}</p>{{ end }}
+						<p>Status: <em>{{ .Status }}</em></p>
+						<a role="button" href="/join" title="Join the event">✔︎ Join</a>
 					</li>
 				{{ end }}
-			</ul>
-			{{ else }}
-			<p>No new invitations or upcoming events.</p>
+				{{ with .Circle }}
+					<li class="circle">
+						<p><span>You're in!</span> You have joined “{{ .Name }}” circle.</p>
+					</li>
+				{{ end }}
 			{{ end }}
+			</ul>
+		{{ else }}
+			<p>No new notifications or upcoming events.</p>
+		{{ end }}
 			<p>
 				<strong>{{ html .loggedin_text }}</strong>
-				<br><a href="/logout">{{ .logout_button }}</a>
+				<br><a href="/settings">Settings</a> • <a href="/logout">{{ .logout_button }}</a>
 			</p>
 		</section>

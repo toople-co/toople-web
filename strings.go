@@ -59,7 +59,7 @@ func LoadStringsFile(filename string) map[string]string {
 	if err != nil {
 		panic(errors.Stackf(err, "load strings: can't read file %q", filename))
 	}
-	re := regexp.MustCompile(`(?m)^(\w+)\n(?:#.*\n)*"((?:[^"\\]*|\\["\\bfnrt\/]|\\u[0-9a-f]{4})*)"`)
+	re := regexp.MustCompile(`(?m)^(\w+)\r?\n(?:#.*\r?\n)*"((?:[^"\\]*|\\["\\bfnrt\/]|\\u[0-9a-f]{4})*)"`)
 	sm := re.FindAllStringSubmatch(string(content), -1)
 	strings := make(map[string]string)
 	for _, m := range sm {

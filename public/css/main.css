@@ -278,10 +278,29 @@ fieldset legend {
   background-color: #16a085;
 }
 
+#footer ul {
+  padding: 0;
+  text-align: center;
+  color: #fff;
+  background: #34495e;
+  padding: 0.5rem;
+}
+
+#footer li {
+  display: inline-block;
+  font-size: 0.875rem;
+}
+
+#footer li:not(:first-child):before {
+  content: "●";
+  padding: 1rem;
+  color: #fff;
+}
+
 #login label,
 #signup label {
-    display: none !important;
-    visibility: hidden;
+  display: none !important;
+  visibility: hidden;
 }
 
 #login small,
@@ -452,10 +471,43 @@ fieldset legend {
   padding: 0;
 }
 
-#home li.event {
+#home li.event, #home li.circle {
   background-color: #eff0f2;
   border-radius: 0.25rem;
   padding: 1rem;
+  line-height: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+#home li.event:before,
+#home li.event:after {
+    content: " ";
+    display: table;
+}
+
+#home li.event:after {
+    clear: both;
+}
+
+#home li.event a[href='/dismiss'],
+#home li.event a[href='/join'] {
+  float: right;
+}
+
+#home li.event a[href='/dismiss'] {
+  background-color: #e74c3c;
+}
+
+#home li.event a[href='/dismiss']:hover {
+  background-color: #ec7063;
+}
+
+#home li.event a[href='/join'] {
+  background-color: #2ecc71;
+}
+
+#home li.event a[href='/join']:hover {
+  background-color: #58d68d;
 }
 
 #home li.event h3 {

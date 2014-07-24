@@ -6,8 +6,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>{{ .name }}</title>
 		<meta name="description" content="{{ .description }}">
-		<link rel="stylesheet" href="css/main.css">
-		<script src="js/modernizr-2.8.0.min.js"></script>
+		<link rel="stylesheet" href="/css/main.css">
+		<script src="/js/modernizr-2.8.0.min.js"></script>
 	</head>
 	<body>
 		<header id="topbar">
@@ -15,7 +15,7 @@
 			{{ with .login_button }}<a href="/login" role="button">Log in</a>{{ end }}
 		</header>
 {{ yield }}
-		<footer>
+		<footer id="footer">
 			<ul>
 				<li><a href="/about">{{ .about }}</a></li>
 				<li><a href="mailto:admin@toople.co">{{ .contact }}</a></li>
@@ -23,6 +23,6 @@
 			</ul>
 		</footer>
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-		<script>window.jQuery || document.write('<script src="js/jquery-1.11.0.min.js"><\/script>')</script>
+		<script>window.jQuery || document.write('<script src="/js/jquery.min.js"><\/script>')</script>
 	</body>
 </html>
