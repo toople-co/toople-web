@@ -88,8 +88,8 @@ func GetParticipants(r render.Render, p martini.Params, s sessions.Session, db *
 		return
 	}
 	pa, err := db.GetParticipants(event, id.(string))
-	if p == nil || err != nil {
-		r.Status(500)
+	if pa == nil || err != nil {
+		r.JSON(500, err)
 		return
 	}
 	r.JSON(200, pa)
