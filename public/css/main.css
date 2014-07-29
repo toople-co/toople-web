@@ -17,16 +17,15 @@ html {
 }
 
 #footer{
-
+  background: #34495e;
 }
 
- #footer ul {
+#footer ul {
   padding: 0;
   text-align: center;
   color: #fff;
-  background: #34495e;
+
   padding: 0.5rem;
-  height: 4em;
 }
 
 #footer li {
@@ -92,8 +91,8 @@ font-size:150%;
 	margin-top: 3px;
 	margin-right: 5px;
 	margin-left: 3px;
- }	
- 
+ }
+
 
 
 
@@ -660,35 +659,30 @@ fieldset legend {
 
 @media only screen and (min-width: 35em) {
     /* Style adjustments for viewports that meet the condition */
-     body {
-      width: 100%;
-      margin: auto;
-    }
-	
 	body > section{
-	width: 35em;
-	margin: auto;
+	  max-width: 35em;
+	  margin: auto;
 	}
-	
+
 }
 
-/* @media only screen and (min-width: 85em) {
-    /* Style adjustments for viewports that meet the condition */
+/*@media only screen and (min-width: 85em) {
+    /* Style adjustments for viewports that meet the condition * /
     body {
       width: 100%;
       margin: auto;
     }
-	
-	body > section{
-	width: 35em;
-	margin: auto;
-	}
-	
-	#toople-left, #toople-right {
-	display: block;
-	}
-} */
 
+  body > section{
+  width: 35em;
+  margin: auto;
+  }
+
+  #toople-left, #toople-right {
+  display: block;
+  }
+}
+*/
 
 @media print,
        (-o-min-device-pixel-ratio: 5/4),
@@ -855,12 +849,12 @@ fieldset legend {
 	margin-top: 3px;
 	margin-right: 3px;
 	margin-left: 3px;
- }	
-	
+ }
+
 
 .success {
     background:#e9ffd9;
-	border-radius: 5px;  
+	border-radius: 5px;
 }
 
 .success:before {
@@ -875,8 +869,8 @@ fieldset legend {
 	margin-top: 3px;
 	margin-right: 3px;
 	margin-left: 3px;
- }	
-	
+ }
+
 
 .warning {
     background:#fff8c4;
@@ -895,8 +889,8 @@ fieldset legend {
 	margin-top: 3px;
 	margin-right: 3px;
 	margin-left: 3px;
- }	
-	
+ }
+
 .notice {
     background-color:#e3f7fc;
 	border-radius: 5px;
@@ -934,11 +928,11 @@ padding-left: 7px;
 	margin-left: 3px;
 
  }
-	   
+
 
 .noticeClicked {
     background:#e9ffd9 url('images/success.png') no-repeat 10px 50%;
-   
+
 }
 
 /* End Notifications */
@@ -973,7 +967,7 @@ float; left;
     position: relative;
 	background:#e3f7fc url('images/notice.png') no-repeat 10px 50%;
     border:1px solid #8ed9f6;
-	
+
 }
 
 #PPbox img {
@@ -1050,7 +1044,7 @@ display: none;
   cursor: pointer;
   margin-top: 1em;
   }
-  
+
 .join-button{
   color: #fff;
   background:#16a085;
@@ -1070,9 +1064,9 @@ display: none;
   cursor: pointer;
   }
 
-  
+
  /*Information for the user*/
-  
+
 .whatIsThis{
 float:right;
 top:2px;
@@ -1097,7 +1091,7 @@ height:17px;
 margin-bottom:4px;
 margin-right:4px;
  }
- 
+
  .bootstrap-tagsinput {
   display:block;
   width:100%;
@@ -1112,12 +1106,12 @@ margin-right:4px;
   display: inline-block;
   font-size: 1em;
  }
-  
- 
+
+
 /*  New Circle Page form styling */
- 
+
  label[for='circle-name']{
- 
+
  font-weight:bold;
  background-size: 17px 17px;
  background-repeat: no-repeat;
@@ -1127,7 +1121,7 @@ margin-right:4px;
  }
 
  label[for='emailsUserInput']{
- 
+
  font-weight:bold;
  background-size: 17px 17px;
  background-repeat: no-repeat;
@@ -1135,9 +1129,9 @@ margin-right:4px;
  padding-left:23px;
  margin-top: 1em;
  }
- 
+
  label[for='circle-id']{
- 
+
  font-weight:bold;
  background-size: 17px 17px;
  background-repeat: no-repeat;
@@ -1145,11 +1139,11 @@ margin-right:4px;
  padding-left:23px;
  margin-top: 1em;
  }
- 
+
 /*  My preferences Page form styling */
 
  label[for='name']{
- 
+
  font-weight:bold;
  background-size: 17px 17px;
  background-repeat: no-repeat;
@@ -1157,30 +1151,30 @@ margin-right:4px;
  padding-left:23px;
  margin-top: 1em;
  }
- 
+
  table{
  width: 100%;
  margin-top:1em;
  margin-bottom:1em;
  }
- 
+
  th{
  background-color: #34495e;
  color: white;
  }
- 
+
  td{
  background-color: #e3f7fc;
  text-align: center;
  }
- 
+
  .dismiss-email{
 width:17px;
 height:17px;
 margin-bottom:4px;
 margin-right:4px;
  }
- 
+
 .dismiss-notification{
 font-weight: bold;
 float: right;
@@ -1246,9 +1240,9 @@ a.joinevent-button{
   padding-top: 18px;
   padding-right: 25px;
   width: 50px;
-  height: 10px; 
+  height: 10px;
   }
-  
+
   .tt-dropdown-menu{
   background-color: pink;
   }
