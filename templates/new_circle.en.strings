@@ -1,3 +1,22 @@
 description
 # The default description to be used in the meta tags
 "Create a new circle on Toople"
+
+submit_button
+# create circle+ (text for the button)
+"Create Circle+"
+
+circle_label_name
+# Circle Name input field label
+"Circle Name:"
+
+email_label_name
+# Members emails input field label
+"Members Emails:"
+
+slug_label_name
+# slug input field label
+"Circle ID:"
+
+
+

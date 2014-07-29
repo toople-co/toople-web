@@ -6,23 +6,66 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>{{ .brand }}</title>
 		<meta name="description" content="{{ .description }}">
+		<link rel="stylesheet" href="/css/bootstrap-tagsinput.css">
+		<link rel="stylesheet" href="/css/jquery-ui.css">
+		<link rel="stylesheet" href="/css/jquery.datetimepicker.css">
 		<link rel="stylesheet" href="/css/main.css">
 		<script src="/js/modernizr-2.8.0.min.js"></script>
+		
 	</head>
 	<body>
+	
+	<!-- header including the top bar etc. -->
+	
 		<header id="topbar">
 			<h1><a href="/">{{ .brand }}</a></h1>
 			{{ with .login_button }}<a href="/login" role="button">Log in</a>{{ end }}
+			<a href="/new/event" role="top-bar-button"><img src="/images/newevent.svg" id="new-event-topbar"></img></button></a>
 		</header>
-{{ yield }}
+
+		<!-- side bars -->
+	<!-- 	
+	<div id="toople-container">	
+		<div id="toople-left">
+			<section id="NotificationArea">
+				<P><P>
+				<div href="profilepage.html" id="welcome">Welcome Amin</div>
+				<P></P>
+				</section>
+		</div>
+		<div id="toople-right">
+			<b><u>My EVENTS</u><p></b>
+				<u>Today:</u> <p><b>Dip in the pool</b>  Status: ON!
+		</div>
+	</div>
+		 -->
+		<!-- main content of each page -->
+		
+		{{ yield }}
+
+		<!-- footer -->
+		
 		<footer id="footer">
 			<ul>
+			
 				<li><a href="/about">{{ .about }}</a></li>
 				<li><a href="mailto:admin@toople.co">{{ .contact }}</a></li>
-				<li><a href="http://github.com/toople-co">{{ .source }}</a></li>
+				<li><a href="http://twitter.com/toople_">Follow us on Twitter</a></li>
+				<li> <a href="">Amin </a></li>
+				<li> <a href=""> Simon</a></li>
+				<!-- <li><a href="http://github.com/toople-co">{{ .source }}</a></li> -->
+				
+				<p><img src="/img/toople-logo.svg" width="30px" height="30px"> 
+				<p> 
 			</ul>
 		</footer>
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 		<script>window.jQuery || document.write('<script src="/js/jquery.min.js"><\/script>')</script>
+		<script src="/js/mailcheck.js"></script>
+		<script src="/js/jquery-ui/jquery-ui.js"></script>
+		<script src="/js/jquery-ui/jquery.datetimepicker.js"></script>	
+		<script src="/js/typeahead.bundle.js"></script>
+		<script src="/js/awesomeScript.js"></script>
+		<script src="/js/bootstrap-tagsinput.js"></script>
 	</body>
 </html>

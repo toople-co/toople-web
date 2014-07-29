@@ -1,4 +1,6 @@
-		<section id="home">
+
+<section id="home">
+		<div id="feed-title">Notifications</div>
 		{{ with .error}}
 			<p><strong style="color:#fcc;">{{ . }}</strong></p>
 		{{ end }}
@@ -6,29 +8,50 @@
 			<ul>
 			{{ range . }}
 				{{ with .Event }}
-					<li class="event">
-						<a role="button" href="/dismiss" title="Not available/interested">✕</a>
-						<h3>{{ .Title }}</h3>
-						<div>
-							<time datetime="{{ .Date }}">{{ .PrettyDate }}</time>
-							@ {{ .Location }}
+				<!-- An event notification -->
+				
+					<li class="alert-box notice">
+				
+						<a href='#' class="dismiss-notification" title='Click to Close'>&times;</a>
+						<hgroup>
+							<h3>{{ .Title }}</h3>
+							<h4>created by Example</h4>
+						</hgroup>
+						<b>Location: </b>{{ .Location }} &nbsp • &nbsp &nbsp <b>Date and Time: </b><time datetime="{{ .Date }}">{{ .PrettyDate }}</time>
+						<br><b>Threshold: </b>{{ .Threshold }}  &nbsp • &nbsp &nbsp  <b>Status: </b><em>{{ .Status }}</em>
+						<br><b>Extra Info:</b> {{ with .Info }}{{ . }}{{ end }}
+						
+						<a role="button" class="joinevent-button" href="/join" title="Join the event">✔︎ Join</a>
+						
+						<p><a href="#" id="whos-going" data-eventId="{{ .Id }}" ><u>People Attending</u></a>
+						<div class="more-info">
+							<ul>
+							</ul>
 						</div>
-						{{ with .Info }}<p>{{ . }}</p>{{ end }}
-						<p>Status: <em>{{ .Status }}</em></p>
-						<a role="button" href="/join" title="Join the event">✔︎ Join</a>
+						
 					</li>
+						
+					<!-- A success notification (if you joined a circle or created one) -->
 				{{ end }}
+					
 				{{ with .Circle }}
-					<li class="circle">
-						<p><span>You're in!</span> You have joined “{{ .Name }}” circle.</p>
+					<li class="alert-box success">
+					<a href='#' class="dismiss-notification" title='Click to Close'>&times;</a>
+						<p><span>You're in!</span> You have joined “<b>{{ .Name }}</b>” circle.</p>
+						
 					</li>
+					
+		
+
+					
 				{{ end }}
 			{{ end }}
 			</ul>
 		{{ else }}
-			<p>No new notifications or upcoming events.</p>
+			<p>You have no new notifications or upcoming events :(</p>
 		{{ end }}
 			<p>
+			
 				<strong>{{ html .loggedin_text }}</strong>
 				<br><a href="/settings">Settings</a> • <a href="/logout">{{ .logout_button }}</a>
 			</p>

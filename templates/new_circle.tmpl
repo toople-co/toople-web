@@ -1,3 +1,27 @@
-		<section id="settings">
+<section id="settings">
+		
+	<H2><B>NEW Circle +</B></h2>
+		
+	<form action="/circle" method="post">	
+		<div id="userName">
+			<label for="circle-name">{{ .circle_label_name }}</label>
+			<input id="circle-name" name="name">
+		</div>
+				<br>
+		
+		<div id="Emails">
+			<label for="emailsUserInput">{{ .email_label_name }}</label>
+			<input id="emailsUserInput" data-role="tagsinput" placeholder="Emails of the people you wish to invite to your circle" name="emails">
+		</div>
+				<br>
 
-		</section>
+		<div id="circle-id-section">
+			<label for="circle-id">{{ .slug_label_name }} </label>
+			<input id="circle-id" placeholder="An ID is the unique name for your circle. No spaces allowed!" name="slug"> 
+		</div>
+		<p>
+		<input class="submit-button" type="submit" value="{{.submit_button}}">
+	</form>
+		
+	
+</section>
