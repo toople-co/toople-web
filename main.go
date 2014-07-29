@@ -53,6 +53,7 @@ func main() {
 	// New event page
 	m.Get("/new/event", GetNewEvent)
 	m.Post("/event", binding.Bind(EventForm{}), PostEvent)
+	// TODO: m.Post("/join/event", binding.Bind(JoinEventForm{}), PostJoinEvent)
 
 	// New circle page
 	m.Get("/new/circle", GetNewCircle)
@@ -63,6 +64,7 @@ func main() {
 
 	// Ajax api
 	m.Get("/participants/:event", GetParticipants)
+	m.Get("/circles", GetCircles)
 
 	// 404: Not found
 	m.NotFound(GetNotFound)

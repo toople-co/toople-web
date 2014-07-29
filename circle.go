@@ -12,17 +12,9 @@ func GetNewCircle(r render.Render, s sessions.Session) {
 		return
 	}
 	view := NewView("new_circle", "en")
-	if name := s.Get("circle_name"); name != nil {
-		view["name"] = name
-		s.Delete("circle_name")
-	}
-	if slug := s.Get("circle_slug"); slug != nil {
-		view["slug"] = slug
-		s.Delete("circle_slug")
-	}
-	if emails := s.Get("circle_emails"); emails != nil {
-		view["emails"] = emails
-		s.Delete("circle_emails")
+	for _, p := range []string{"name", "slug", "emails"} {
+		view[p] = s.Get("circle_" + p)
+		s.Delete("circle_" + p)
 	}
 	if error := s.Get("error"); error != nil {
 		view["error"] = view[error.(string)]
@@ -43,7 +35,7 @@ func PostCircle(r render.Render, f CircleForm, s sessions.Session, db *db.DB) {
 		r.Redirect("/")
 		return
 	}
-	if _, err := db.NewCircle(f.Name, f.Slug, id.(string)); err != nil {
+	if db.NewCircle(f.Name, f.Slug, id.(string)) != nil {
 		s.Set("error", "internal_error")
 		s.Set("circle_name", f.Name)
 		s.Set("circle_slug", f.Slug)

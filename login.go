@@ -12,10 +12,8 @@ func GetLogin(r render.Render, s sessions.Session) {
 		return
 	}
 	view := NewView("login", "en")
-	if email := s.Get("login_email"); email != nil {
-		view["email"] = email
-		s.Delete("login_email")
-	}
+	view["email"] = s.Get("login_email")
+	s.Delete("login_email")
 	if error := s.Get("error"); error != nil {
 		view["error"] = view[error.(string)]
 		s.Delete("error")
@@ -29,10 +27,10 @@ type LoginForm struct {
 }
 
 func PostLogin(r render.Render, f LoginForm, s sessions.Session, db *db.DB) {
-	auth, u, err := db.AuthUser(f.Email, f.Password)
-	if auth {
-		s.Set("user_id", u.Id())
-		s.Set("user_name", u.Name())
+	ok, u, err := db.AuthUser(f.Email, f.Password)
+	if ok {
+		s.Set("user_id", u.Id)
+		s.Set("user_name", u.Name)
 		r.Redirect("/")
 		return
 	}

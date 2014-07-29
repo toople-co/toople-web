@@ -3,7 +3,6 @@ package main
 import (
 	"time"
 
-	"github.com/go-martini/martini"
 	"github.com/martini-contrib/render"
 	"github.com/martini-contrib/sessions"
 	"github.com/toople-co/toople-db"
@@ -61,8 +60,7 @@ func PostEvent(r render.Render, f EventForm, s sessions.Session, db *db.DB) {
 		r.Redirect("/")
 		return
 	}
-	e, err := db.NewEvent(f.Date, f.Loc, f.Title, f.Info, id.(string), f.Thresh, f.Circles)
-	if e == nil || err != nil {
+	if db.NewEvent(f.Date, f.Loc, f.Title, f.Info, id.(string), f.Thresh, f.Circles) != nil {
 		s.Set("error", "internal_error")
 		s.Set("event_date", f.Date)
 		s.Set("event_title", f.Title)
@@ -74,23 +72,4 @@ func PostEvent(r render.Render, f EventForm, s sessions.Session, db *db.DB) {
 		return
 	}
 	r.Redirect("/")
-}
-
-func GetParticipants(r render.Render, p martini.Params, s sessions.Session, db *db.DB) {
-	id := s.Get("user_id")
-	if id == nil {
-		r.Redirect("/")
-		return
-	}
-	event := p["event"]
-	if event == "" {
-		r.Status(500)
-		return
-	}
-	pa, err := db.GetParticipants(event, id.(string))
-	if pa == nil || err != nil {
-		r.JSON(500, err)
-		return
-	}
-	r.JSON(200, pa)
 }

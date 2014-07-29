@@ -50,9 +50,13 @@ internal_error
 # The error displayed when the the app is unavailable
 "An error has occurred."
 
-email_error
+email_exists_error
 # The error displayed when the email is already used
 "This email is already being used by someone. Are you trying to login?"
+
+bad_email_error
+# The error displayed when the provided email is not an email
+"This email address appears to be invalid. Please double check it!"
 
 name_error
 # The error displayed when no name was provided

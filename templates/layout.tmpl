@@ -4,14 +4,14 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>{{ .name }}</title>
+		<title>{{ .brand }}</title>
 		<meta name="description" content="{{ .description }}">
 		<link rel="stylesheet" href="/css/main.css">
 		<script src="/js/modernizr-2.8.0.min.js"></script>
 	</head>
 	<body>
 		<header id="topbar">
-			<h1><a href="/">{{ .name }}</a></h1>
+			<h1><a href="/">{{ .brand }}</a></h1>
 			{{ with .login_button }}<a href="/login" role="button">Log in</a>{{ end }}
 		</header>
 {{ yield }}
