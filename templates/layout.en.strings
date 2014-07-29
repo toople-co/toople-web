@@ -17,3 +17,12 @@ contact
 source
 # The text of the link to the Github repository in the footer
 "Contribute on Github"
+
+loggedin_text
+# The text that explains that you are logged in
+# Use `%s` as a placeholder for the user's name
+"You are logged in as “%s”."
+
+logout_button
+# The text on the log out button
+"Log out"

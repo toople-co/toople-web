@@ -20,7 +20,7 @@
 		<header id="topbar">
 			<h1><a href="/">{{ .brand }}</a></h1>
 			{{ with .login_button }}<a href="/login" role="button">Log in</a>{{ end }}
-			<a href="/new/event" role="top-bar-button"><img src="/images/newevent.svg" id="new-event-topbar"></img></button></a>
+			{{ with not .login_button }}<a href="/new/event" role="top-bar-button"><img src="/images/newevent.svg" id="new-event-topbar"></img></button></a>{{ end }}
 		</header>
 
 		<!-- main content of each page -->
@@ -28,6 +28,10 @@
 		{{ yield }}
 
 		<!-- footer -->
+		
+		{{ with not .login_button }}<strong>{ html .loggedin_text }</strong>
+				<br><a href="/settings">Settings</a> • <a href="/logout">{ .logout_button }</a>
+			</p>{{ end }}
 		
 		<footer id="footer">
 			<ul>
