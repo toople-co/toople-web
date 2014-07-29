@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"time"
 
 	"github.com/martini-contrib/render"
@@ -42,6 +43,9 @@ func GetNewEvent(r render.Render, s sessions.Session) {
 		view["error"] = view[error.(string)]
 		s.Delete("error")
 	}
+	name := s.Get("user_name")
+	view["loggedin"] = true
+	view["loggedin_text"] = fmt.Sprintf(view["loggedin_text"].(string), name.(string))
 	r.HTML(200, "new_event", view)
 }
 

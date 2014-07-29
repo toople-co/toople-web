@@ -20,6 +20,7 @@ func GetIndex(r render.Render, s sessions.Session, db *db.DB) {
 			return
 		}
 		view := NewView("home", "en")
+		view["loggedin"] = true
 		view["loggedin_text"] = fmt.Sprintf(view["loggedin_text"].(string), name.(string))
 		view["feed"] = feed
 		r.HTML(200, "home", view)

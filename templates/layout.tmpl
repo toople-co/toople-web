@@ -11,45 +11,48 @@
 		<link rel="stylesheet" href="/css/jquery.datetimepicker.css">
 		<link rel="stylesheet" href="/css/main.css">
 		<script src="/js/modernizr-2.8.0.min.js"></script>
-		
+
 	</head>
 	<body>
-	
+
 	<!-- header including the top bar etc. -->
-	
+
 		<header id="topbar">
 			<h1><a href="/">{{ .brand }}</a></h1>
 			{{ with .login_button }}<a href="/login" role="button">Log in</a>{{ end }}
-			{{ with not .login_button }}<a href="/new/event" role="top-bar-button"><img src="/images/newevent.svg" id="new-event-topbar"></img></button></a>{{ end }}
+			{{ with .loggedin }}<a href="/new/event" role="top-bar-button"><img src="/images/newevent.svg" id="new-event-topbar"></img></a>{{ end }}
 		</header>
 
 		<!-- main content of each page -->
-		
+
 		{{ yield }}
 
 		<!-- footer -->
-		
-		{{ with not .login_button }}<strong>{ html .loggedin_text }</strong>
-				<br><a href="/settings">Settings</a> • <a href="/logout">{ .logout_button }</a>
-			</p>{{ end }}
-		
+
+		{{ if .loggedin }}
+		<section>
+			<strong>{{ html .loggedin_text }}</strong>
+			<p><a href="/settings">Settings</a> • <a href="/logout">{{ .logout_button }}</a></p>
+		</section>
+		{{ end }}
+
 		<footer id="footer">
 			<ul>
-			
+
 				<li><a href="/about">{{ .about }}</a></li>
 				<li><a href="mailto:admin@toople.co">{{ .contact }}</a></li>
 				<li><a href="http://twitter.com/toople_">Follow us on Twitter</a></li>
 				<!-- <li><a href="http://github.com/toople-co">{{ .source }}</a></li> -->
-				
-				<p><img src="/img/toople-logo.svg" width="30px" height="30px"> 
-				<p> 
+
+				<p><img src="/img/toople-logo.svg" width="30px" height="30px">
+				<p>
 			</ul>
 		</footer>
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 		<script>window.jQuery || document.write('<script src="/js/jquery.min.js"><\/script>')</script>
 		<script src="/js/mailcheck.js"></script>
 		<script src="/js/jquery-ui/jquery-ui.js"></script>
-		<script src="/js/jquery-ui/jquery.datetimepicker.js"></script>	
+		<script src="/js/jquery-ui/jquery.datetimepicker.js"></script>
 		<script src="/js/typeahead.bundle.js"></script>
 		<script src="/js/awesomeScript.js"></script>
 		<script src="/js/bootstrap-tagsinput.js"></script>
