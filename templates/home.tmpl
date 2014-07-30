@@ -14,7 +14,7 @@
 
 						<form action="/dismiss" method="post">
 							<input type="hidden" name="id" value="{{ .Id }}">
-							<input type="submit" class="dismiss-notification" title="Click to Close" value="✕">
+							<input type="submit" class="dismiss-notification" title="Click to Dismiss" value="✕">
 						</form>
 						<hgroup>
 							<h3>{{ .Title }}</h3>
@@ -45,7 +45,7 @@
 						<li class="alert-box success">
 							<form action="/dismiss" method="post">
 								<input type="hidden" name="id" value="{{ .Id }}">
-								<input type="submit" class="dismiss-notification" title="Click to Close" value="✕">
+								<input type="submit" class="dismiss-notification" title="Click to Dismiss" value="✕">
 							</form>
 							<p><span>You're in!</span> You have joined “<b>{{ .Circle.Name }}</b>” circle.</p>
 						</li>
@@ -53,7 +53,7 @@
 						<li class="alert-box warning">
 							<form action="/dismiss" method="post">
 								<input type="hidden" name="id" value="{{ .Id }}">
-								<input type="submit" class="dismiss-notification" title="Click to Close" value="✕">
+								<input type="submit" class="dismiss-notification" title="Click to Dismiss" value="✕">
 							</form>
 							<p><span>Alert:</span> <b>{{ .User.Name }}</b> has joined your circle “<b>{{ .Circle.Name }}</b>”.</p>
 						</li>
