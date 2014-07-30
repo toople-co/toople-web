@@ -20,7 +20,7 @@ password_label
 
 password_placeholder
 # The placeholder text for the password input field
-"Password (optional)"
+"Password"
 
 password_comment
 # The text displayed right after the password field explaining why a password is optional

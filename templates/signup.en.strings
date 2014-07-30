@@ -28,15 +28,15 @@ name_comment
 
 password_label
 # The label text for the password input field (visually hidden)
-"Password (optional)"
+"Password"
 
 password_placeholder
 # The placeholder text for the password input fields
-"Password (optional)"
+"Password"
 
 password_comment
 # The text displayed right after the password field explaining why a password is optional
-"If you don't enter a password, you will need to click a on link that we will send you by email each time you want to log in (only if you have been logged out in the meantime)."
+"Minimum 8 characters."
 
 email_submit
 # The text on the submit button for the email and password section

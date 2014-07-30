@@ -36,10 +36,19 @@ $(document).ready(function () {
     //Add ME to list on click of the join button
 
 
-    $('.joinevent-button').on('click', function (e) {
+    $('input.joinevent-button').on('click', function (e) {
 		e.preventDefault();
-        if ($(this).parent().children('div.more-info').children('ul').children('li.me').length === 0) {
-            $('<li class="me">ME</li>').appendTo($(this).parent().children('div.more-info').children('ul'));
+        var x = $(this).parent().parent().children('div.more-info').children('ul');
+		if (x.children('li.me').length === 0) {
+			var event = $('#whos-going').attr('data-eventId');
+			$.ajax({
+				type: "POST",
+				url: '/join',
+				data: {id: event},
+				success: function(){
+					$('<li class="me">ME</li>').appendTo(x);
+				}
+			});		
         }
     });
 
@@ -233,7 +242,10 @@ $(document).ready(function () {
 
 	$("#circle-id").focus(function () {
 		edited = true;
-});
-	 
+	});
+
+	$('#signup input#password').passStrengthify({minimum:8});
+
+	
 });
 

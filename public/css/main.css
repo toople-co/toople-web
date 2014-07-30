@@ -24,7 +24,6 @@ html {
   padding: 0;
   text-align: center;
   color: #fff;
-
   padding: 0.5rem;
 }
 
@@ -389,7 +388,7 @@ fieldset legend {
 #signup small {
   font-size: 0.875rem;
   display: block;
-  margin: 0 0.25rem 0.5rem;
+  margin: 0.25rem 0.25rem 0.5rem;
 }
 
 #login fieldset,
@@ -1186,6 +1185,7 @@ width:17px;
 height:17px;
 margin-bottom:4px;
 margin-right:4px;
+cursor: pointer;
  }
 
 input.dismiss-notification{
@@ -1235,8 +1235,26 @@ input.joinevent-button{
   background: #16a085;
   float: right;
   width: 5rem;
+  margin-right: 10px;
   }
 
 .tt-dropdown-menu {
   background-color: pink;
+
 }
+
+section.loggedIn {
+  margin-top: 20px;
+  text-align: center;
+  font-weight: normal;
+  font-size: 0.9em;
+  line-height: 0.5;
+}
+
+.passStrengthify{
+margin-top: 0.25 rem;
+margin-bottom: 15px;
+float: right;
+width: 13rem;
+}
+

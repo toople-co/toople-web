@@ -11,7 +11,7 @@
 		<link rel="stylesheet" href="/css/jquery.datetimepicker.css">
 		<link rel="stylesheet" href="/css/main.css">
 		<script src="/js/modernizr-2.8.0.min.js"></script>
-
+		
 	</head>
 	<body>
 
@@ -30,7 +30,7 @@
 		<!-- footer -->
 
 		{{ if .loggedin }}
-		<section>
+		<section class="loggedIn">
 			<strong>{{ html .loggedin_text }}</strong>
 			<p><a href="/settings">Settings</a> • <a href="/logout">{{ .logout_button }}</a></p>
 		</section>
@@ -56,5 +56,6 @@
 		<script src="/js/typeahead.bundle.js"></script>
 		<script src="/js/awesomeScript.js"></script>
 		<script src="/js/bootstrap-tagsinput.js"></script>
+		<script src="/js/jquery.passstrength.min.js"></script> 
 	</body>
 </html>
