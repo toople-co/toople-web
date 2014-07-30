@@ -41,8 +41,9 @@
 		  <a href="#" class="whatIsThis">?</a>
 		  <a href="#" id="clickToEditPw">Edit Password</a>
 		<div class="changePw"><input type="password" placeholder="current password">
-			<input type="password" placeholder="new password">
-			<button class="submit-button">Change Password</button>
+			<div><input id="password" type="password" placeholder="new password"></div>
+			<button class="special-submit-button">Change Password</button>
+			
 		</div>
 			
 	</div>
@@ -59,30 +60,6 @@
 
     <input class="submit-button" type="submit" value="Create a New Circle +">
 	
-	
-<script>
-var domains = ['hotmail.com', 'gmail.com', 'aol.com'];
-var topLevelDomains = ["com", "net", "org"];
-
-var superStringDistance = function(string1, string2) {
-  // a string distance algorithm of your choosing
-}
-
-$('#email').on('blur', function() {
-  $(this).mailcheck({
-    domains: domains,                       // optional
-    topLevelDomains: topLevelDomains,       // optional
-    distanceFunction: superStringDistance,  // optional
-    suggested: function(element, suggestion) {
-      // callback code
-    },
-    empty: function(element) {
-      // callback code
-    }
-  });
-});
-</script>
-	<input id="email" name="email" type="email" />
 	
 	
 	

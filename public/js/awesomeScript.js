@@ -245,7 +245,7 @@ $(document).ready(function () {
 	});
 
 	$('#signup input#password').passStrengthify({minimum:8});
-
+	$('#settings input#password').passStrengthify({minimum:8});
 	
 });
 
