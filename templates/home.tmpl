@@ -40,14 +40,24 @@
 					<!-- A success notification (if you joined a circle or created one) -->
 				{{ end }}
 
-				{{ with .Circle }}
-					<li class="alert-box success">
-						<form action="/dismiss" method="post">
-							<input type="hidden" name="id" value="{{ .Id }}">
-							<input type="submit" class="dismiss-notification" title="Click to Close" value="✕">
-						</form>
-						<p><span>You're in!</span> You have joined “<b>{{ .Name }}</b>” circle.</p>
-					</li>
+				{{ with .Member }}
+					{{ if .Me }}
+						<li class="alert-box success">
+							<form action="/dismiss" method="post">
+								<input type="hidden" name="id" value="{{ .Id }}">
+								<input type="submit" class="dismiss-notification" title="Click to Close" value="✕">
+							</form>
+							<p><span>You're in!</span> You have joined “<b>{{ .Circle.Name }}</b>” circle.</p>
+						</li>
+					{{ else }}
+						<li class="alert-box warning">
+							<form action="/dismiss" method="post">
+								<input type="hidden" name="id" value="{{ .Id }}">
+								<input type="submit" class="dismiss-notification" title="Click to Close" value="✕">
+							</form>
+							<p><span>Alert:</span> <b>{{ .User.Name }}</b> has joined your circle “<b>{{ .Circle.Name }}</b>”.</p>
+						</li>
+					{{ end }}
 				{{ end }}
 			{{ end }}
 			</ul>
