@@ -9,10 +9,13 @@
 			{{ range . }}
 				{{ with .Event }}
 				<!-- An event notification -->
-				
+
 					<li class="alert-box notice">
-				
-						<a href='#' class="dismiss-notification" title='Click to Close'>&times;</a>
+
+						<form action="/dismiss" method="post">
+							<input type="hidden" name="id" value="{{ .Id }}">
+							<input type="submit" class="dismiss-notification" title="Click to Close" value="✕">
+						</form>
 						<hgroup>
 							<h3>{{ .Title }}</h3>
 							<h4>created by Example</h4>
@@ -20,30 +23,31 @@
 						<b>Location: </b>{{ .Location }} &nbsp • &nbsp &nbsp <b>Date and Time: </b><time datetime="{{ .Date }}">{{ .PrettyDate }}</time>
 						<br><b>Threshold: </b>{{ .Threshold }}  &nbsp • &nbsp &nbsp  <b>Status: </b><em>{{ .Status }}</em>
 						<br><b>Extra Info:</b> {{ with .Info }}{{ . }}{{ end }}
-						
-						<a role="button" class="joinevent-button" href="/join" title="Join the event">✔︎ Join</a>
-						
+
+						<form action="/join" method="post">
+							<input type="hidden" name="id" value="{{ .Id }}">
+							<input type="submit" class="joinevent-button" title="Join the event" value="✔︎ Join">
+						</form>
+
 						<p><a href="#" id="whos-going" data-eventId="{{ .Id }}" ><u>People Attending</u></a>
 						<div class="more-info">
 							<ul>
 							</ul>
 						</div>
-						
+
 					</li>
-						
+
 					<!-- A success notification (if you joined a circle or created one) -->
 				{{ end }}
-					
+
 				{{ with .Circle }}
 					<li class="alert-box success">
-					<a href='#' class="dismiss-notification" title='Click to Close'>&times;</a>
+						<form action="/dismiss" method="post">
+							<input type="hidden" name="id" value="{{ .Id }}">
+							<input type="submit" class="dismiss-notification" title="Click to Close" value="✕">
+						</form>
 						<p><span>You're in!</span> You have joined “<b>{{ .Name }}</b>” circle.</p>
-						
 					</li>
-					
-		
-
-					
 				{{ end }}
 			{{ end }}
 			</ul>
@@ -51,6 +55,6 @@
 			<p>You have no new notifications or upcoming events :(</p>
 		{{ end }}
 			<p>
-			
-			
+
+
 		</section>
