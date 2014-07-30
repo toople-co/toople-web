@@ -62,6 +62,10 @@ func main() {
 	// Settings (account, profile)
 	m.Get("/settings", GetSettings)
 
+	// Actions
+	m.Post("/dismiss", binding.Bind(IdForm{}), PostDismiss)
+	m.Post("/join", binding.Bind(IdForm{}), PostJoin)
+
 	// Ajax api
 	m.Get("/participants/:event", GetParticipants)
 	m.Get("/circles", GetCircles)
