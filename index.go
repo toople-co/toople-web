@@ -16,7 +16,7 @@ func GetIndex(r render.Render, s sessions.Session, db *db.DB) {
 		if err != nil {
 			view := NewView("error", "en")
 			view["error"] = view["internal_error"]
-			r.HTML(200, "error", view)
+			r.HTML(500, "error", view)
 			return
 		}
 		view := NewView("home", "en")
