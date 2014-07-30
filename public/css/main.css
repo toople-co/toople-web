@@ -873,6 +873,16 @@ li.alert-box {
 	margin-right: 3px;
 	margin-left: 3px;
  }
+ 
+ .alert-box.success {
+  padding: 0.25rem;
+  height: 1.25rem;
+}
+
+.alert-box.success p {
+  margin: 0;
+}
+
 
 
 .warning {
@@ -900,16 +910,6 @@ li.alert-box {
 	border-radius: 0.25rem;
 	padding: 0.25rem;
 }
-
-.alert-box.success {
-  padding: 0.25rem;
-  height: 1.25rem;
-}
-
-.alert-box.success p {
-  margin: 0;
-}
-
 
 .notice h3, .notice h4{
 display: inline;
