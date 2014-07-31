@@ -1099,6 +1099,7 @@ right; 2px;
 
 #popupInfo{
 display: none;
+font-weight: normal;
 }
 
 .bottom-favicon{
