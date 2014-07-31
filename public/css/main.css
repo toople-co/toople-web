@@ -1220,15 +1220,15 @@ input.dismiss-notification{
   float: right;
 }
 
-a#whos-going{
-color: #34495e;
-border-color: red;
-font-weight: bold;
-margin-bottom: 100px;
+a.whos-going{
+	color: #34495e;
+	border-color: red;
+	font-weight: bold;
+	margin-bottom: 100px;
 }
 
-a#whos-going:before{
-content: " ";
+a.whos-going:before{
+	content: " ";
 	display: block;
 	width: 1.5em;
 	float: left;
@@ -1247,12 +1247,30 @@ input.joinevent-button{
   background: #16a085;
   float: right;
   width: 5rem;
-  margin-right: 10px;
+  margin-right: 2px;
   }
 
 .tt-dropdown-menu {
-  background-color: pink;
+  background-color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  color: blue;
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.5);
+  margin: 0;
+}
 
+.tt-suggestions .tt-suggestion {
+ padding: 2px 5px;
+ color: black;
+ border-radius: 5px;
+ margin: 0;
+}
+
+.tt-suggestions .tt-suggestion:hover {
+ color: white;
+ background-color: #3498db;
+ height: 100%;
+ margin: 0;
 }
 
 section.loggedIn {

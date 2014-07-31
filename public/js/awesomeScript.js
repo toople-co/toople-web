@@ -11,7 +11,7 @@ $(document).ready(function () {
     $('li.notice').click(function () {
         $(this).children('div').slideToggle();
 		//get the list of participants
-		var x = $('#whos-going').attr('data-eventId');
+		var x = $(this).children('a.whos-going').attr('data-eventId');
 		var y = $(this);
 		if (y.children('div.more-info').children('ul').children('li').length === 0) {
 			$.ajax('/participants/'+ x)
@@ -38,16 +38,18 @@ $(document).ready(function () {
 
     $('input.joinevent-button').on('click', function (e) {
 		e.preventDefault();
-        var x = $(this).parent().parent().children('div.more-info').children('ul');
-		if (x.children('li.me').length === 0) {
-			var event = $('#whos-going').attr('data-eventId');
+        var x = $(this).parent().parent();
+		var y = x.children('div.more-info').children('ul');
+		if (y.children('li.me').length === 0) {
+			var event = x.children('a.whos-going').attr('data-eventId');
 			$.ajax({
 				type: "POST",
 				url: '/join',
 				data: {id: event},
 				success: function(){
-					$('<li class="me">ME</li>').appendTo(x);
+					$('<li class="me">ME</li>').appendTo(y);
 				}
+				
 			});		
         }
     });
@@ -115,7 +117,13 @@ $(document).ready(function () {
     // typeahead for circles input
 
 	
-	var substringMatcher = function(strs) {
+	var substringMatcher = function() {
+	var circles = null;
+	if (!circles) {
+		$.get('/circles', {async: false}, function(data) {
+			circles = data;
+		})
+	}
 	return function findMatches(q, cb) {
     var matches, substrRegex;
  
@@ -127,7 +135,7 @@ $(document).ready(function () {
  
 			// iterate through the pool of strings and for any string that
 			// contains the substring `q`, add it to the `matches` array
-			$.each(strs, function(i, str) {
+			$.each(circles, function(i, str) {
 				if (substrRegex.test(str.name)) {
 				// the typeahead jQuery plugin expects suggestions to a
 				// JavaScript object, refer to typeahead docs for more info
@@ -139,31 +147,44 @@ $(document).ready(function () {
 		};
 	};
  
-	var states = [{"id":"c0clab","name":"Couzin Lab","slug":"couzinlab"},{"id":"c0kus","name":"Kuskus team","slug":"kuskus"}];
+	//var states = [{"id":"c0clab","name":"Couzin Lab","slug":"couzinlab"},{"id":"c0kus","name":"Kuskus team","slug":"kuskus"}];
  
 
-/* 	var elt = $('input#invitedCircles');
+	var elt = $('input#invitedCircles');
 	elt.tagsinput();
 	elt.tagsinput('input').typeahead({
 		hint: true,
 		highlight: true,
 		minLength: 1
 	},{
-		name: 'states',
+		name: 'circles',
 		displayKey: 'name',
-		source: substringMatcher(states)
+		source: substringMatcher()
 	}).bind('typeahead:selected', $.proxy(function (obj, datum) {
 		this.tagsinput('add', datum.name);
 		this.tagsinput('input').typeahead('val', '');
-	}, elt)); */
+	}, elt));
 	
-	$('#invitedCircles').tagsinput({
-		typeahead: {                  
-			source: function(query) {
-				return $.get('/circles');
-			}
+	/* var circles = new Bloodhound({
+		datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+		queryTokenizer: Bloodhound.tokenizers.whitespace,
+		prefetch: {
+			url: '/circles'
 		}
 	});
+	circles.initialize();
+	
+	$('#invitedCircles').tagsinput({
+		itemValue: 'id',
+		itemText: 'name',
+		freeInput: false,
+		typeaheadjs: {
+			name: 'circles',
+			displayKey: 'name',
+			valueKey: 'id',
+			source: circles.ttAdapter()
+		}
+	}); */
 	
         //mailchecker
 
