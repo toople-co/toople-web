@@ -1,7 +1,7 @@
 
 <section id="home">
 		<div id="feed-title">Notifications</div> 
- 
+	
 		{{ with .error}}
 			<p><strong style="color:#fcc;">{{ . }}</strong></p>
 		{{ end }}
@@ -65,7 +65,23 @@
 		{{ else }}
 			<p>You have no new notifications or upcoming events :(</p>
 		{{ end }}
-			<p>
+			<hr>
+			
+			<div id="control-center"> 
+		
+		<a id="control-new-event" href="/new/event">
+		New Event +
+		</a>
+		
+		<a id="control-new-circle" href="/new/circle">
+		New Circle +
+		</a>
+		
+		<a id="control-settings" href="/settings">
+		Settings
+		</a>
+		
+	</div>
 
 
 		</section>
