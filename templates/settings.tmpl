@@ -8,7 +8,7 @@
 <form>
 
 	<div id="userName">
-		<label for="name">Name: </label><span id='name'>Amin Omarouayache</span>&nbsp &nbsp 
+		<label for="name">Name: </label><span id='name'>{{ .Name }}</span>&nbsp &nbsp 
 		<a href="#" id="clickToEditName"><b>Edit Name</b></a>
 		<a href="#" class="whatIsThis">?</a>
 	</div>
@@ -21,8 +21,9 @@
 	<b>Emails: </b>
 	<table id="email-table">
 		<tr><th>Email Address</th><th>Notifications</th><th>Remove?</th></tr>
-		<tr id="table-row"><td>personal.amin@gmail.com</td><td><input type="checkbox" checked></td><td><img class="dismiss-email" src="images/bin.svg"></img></td></tr>
-		<tr id="table-row"><td>personal.amin@hotmail.com</td><td><input type="checkbox"></td><td><img class="dismiss-email" src="images/bin.svg"></img></td></tr>
+		{{ range .Emails}}
+		<tr id="table-row"><td>{{ . }}</td><td><input type="checkbox" checked></td><td><img class="dismiss-email" src="images/bin.svg"></img></td></tr>
+		{{ end }}
 	</table>
 	<a href="#" id="clickToEditEmails"><b>+Add email</b></a>
 	

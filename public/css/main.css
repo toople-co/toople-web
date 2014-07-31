@@ -1250,14 +1250,6 @@ input.joinevent-button{
   margin-right: 2px;
   }
 
-.tt-dropdown-menu {
-  background-color: #fff;
-  border-radius: 5px;
-  cursor: pointer;
-  color: blue;
-  box-shadow: 2px 2px 6px rgba(0,0,0,0.5);
-  margin: 0;
-}
 
 .tt-suggestions .tt-suggestion {
  padding: 2px 5px;

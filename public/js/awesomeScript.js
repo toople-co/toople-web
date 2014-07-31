@@ -151,7 +151,13 @@ $(document).ready(function () {
  
 
 	var elt = $('input#invitedCircles');
-	elt.tagsinput();
+	elt.tagsinput(
+	{
+		itemValue: 'id',
+		itemText: 'name',
+		freeInput: false
+	}	
+	);
 	elt.tagsinput('input').typeahead({
 		hint: true,
 		highlight: true,
@@ -161,11 +167,11 @@ $(document).ready(function () {
 		displayKey: 'name',
 		source: substringMatcher()
 	}).bind('typeahead:selected', $.proxy(function (obj, datum) {
-		this.tagsinput('add', datum.name);
+		this.tagsinput('add', datum);
 		this.tagsinput('input').typeahead('val', '');
 	}, elt));
 	
-	/* var circles = new Bloodhound({
+/* 	var circles = new Bloodhound({
 		datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
 		queryTokenizer: Bloodhound.tokenizers.whitespace,
 		prefetch: {
@@ -182,7 +188,8 @@ $(document).ready(function () {
 			name: 'circles',
 			displayKey: 'name',
 			valueKey: 'id',
-			source: circles.ttAdapter()
+			//source: circles.ttAdapter()
+			source: [{"id":"c0clab","name":"Couzin Lab","slug":"couzinlab"},{"id":"c0kus","name":"Kuskus team","slug":"kuskus"}]
 		}
 	}); */
 	
