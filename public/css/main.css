@@ -379,6 +379,14 @@ fieldset legend {
   background-color: #16a085;
 }
 
+#topbar a[href='/new/event']:hover, #topbar a[href='/login']:focus {
+  background-color: #48c9b0;
+}
+
+#topbar a[href='/new/event']:active {
+  background-color: #16a085;
+}
+
 #login label,
 #signup label {
     display: none !important;
@@ -1299,3 +1307,77 @@ width: 13rem;
   cursor: pointer;
   margin-top: 1em;
   }
+  
+/*   control center */
+  
+#control-center{
+	width: 90%;
+	background-color: #d6dbdf;
+	height: 1.5em;
+	border-radius: 5px;
+	margin: auto;
+	padding: 2px 2px;
+	cursor: pointer;
+}
+
+/* new event in the control center */
+
+#control-center a{
+	width: 32%;
+	text-align: left;
+	float: left;
+	margin-left: 5px;
+	margin-top: 1px;
+	color: #34495e;
+}
+
+#control-center a#control-new-event:before{
+    content: " ";
+	width: 1em;
+	float: left;
+	height: 1em;
+	background-size: 1em 1em;
+	background-repeat: no-repeat;
+	background-image: url('../images/date-time.svg');
+	margin-top: 3px;
+	margin-left: 25px;
+	margin-right: 3px;
+ }
+
+#control-center a:hover{
+	background-color: #1abc9c;
+	color: white;
+	border-radius: 5px;
+}
+
+/* The new circle icon in the control center */
+
+#control-center a#control-new-circle:before{
+    content: " ";
+	width: 1em;
+	float: left;
+	height: 1em;
+	background-size: 1em 1em;
+	background-repeat: no-repeat;
+	background-image: url('../images/circle.svg');
+	margin-top: 3px;
+	margin-left: 25px;
+	margin-right: 3px;
+ }
+
+/* the settings icon in the control center */
+
+
+#control-center a#control-settings:before{
+    content: " ";
+	width: 1em;
+	float: left;
+	height: 1em;
+	background-size: 1em 1em;
+	background-repeat: no-repeat;
+	background-image: url('../images/settings.svg');
+	margin-top: 4px;
+	margin-left: 40px;
+	margin-right: 3px;
+ }
+
