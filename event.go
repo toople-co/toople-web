@@ -17,8 +17,8 @@ func GetNewEvent(r render.Render, s sessions.Session) {
 	}
 	view := NewView("new_event", "en")
 	for _, p := range []string{"date", "title", "location", "info", "circles", "threshold"} {
-		view[p] = s.Get("circle_" + p)
-		s.Delete("circle_" + p)
+		view[p] = s.Get("event_" + p)
+		s.Delete("event_" + p)
 	}
 	if error := s.Get("error"); error != nil {
 		view["error"] = view[error.(string)]
@@ -31,12 +31,12 @@ func GetNewEvent(r render.Render, s sessions.Session) {
 }
 
 type EventForm struct {
-	Date    time.Time `form:"date"`
-	Title   string    `form:"title"`
-	Loc     string    `form:"location"`
-	Info    string    `form:"info"`
-	Circles string    `form:"circles"`
-	Thresh  int       `form:"threshold"`
+	Date    string `form:"date"`
+	Title   string `form:"title"`
+	Loc     string `form:"location"`
+	Info    string `form:"info"`
+	Circles string `form:"circles"`
+	Thresh  int    `form:"threshold"`
 }
 
 func PostEvent(r render.Render, f EventForm, s sessions.Session, db *db.DB) {
@@ -45,13 +45,33 @@ func PostEvent(r render.Render, f EventForm, s sessions.Session, db *db.DB) {
 		r.Redirect("/")
 		return
 	}
-	fmt.Printf("\n%+v\n\n", f)
+	// TODO: Fix datetime, refactor errors
+	loc, err := time.LoadLocation("America/New_York")
+	if err != nil {
+		s.Set("error", "internal_error")
+		s.Set("event_date", f.Date)
+		s.Set("event_title", f.Title)
+		s.Set("event_location", f.Loc)
+		s.Set("event_info", f.Info)
+		s.Set("event_circles", f.Circles)
+		s.Set("event_threshold", f.Thresh)
+		r.Redirect("/new/event")
+		return
+	}
+	date, err := time.ParseInLocation("Jan 2, 2006 – 15:04", f.Date, loc)
+	if err != nil {
+		s.Set("error", "internal_error")
+		s.Set("event_date", f.Date)
+		s.Set("event_title", f.Title)
+		s.Set("event_location", f.Loc)
+		s.Set("event_info", f.Info)
+		s.Set("event_circles", f.Circles)
+		s.Set("event_threshold", f.Thresh)
+		r.Redirect("/new/event")
+		return
+	}
 	circles := strings.Split(f.Circles, ",")
-	if err := db.NewEvent(f.Date, f.Loc, f.Title, f.Info, id.(string), f.Thresh, circles); err != nil {
-		fmt.Println("Date: ", f.Date)
-		fmt.Println("Now : ", time.Now())
-		fmt.Println(err)
-		// TODO: Fix datetime
+	if err := db.NewEvent(date, f.Loc, f.Title, f.Info, id.(string), f.Thresh, circles); err != nil {
 		s.Set("error", "internal_error")
 		s.Set("event_date", f.Date)
 		s.Set("event_title", f.Title)
