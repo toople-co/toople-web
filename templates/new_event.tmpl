@@ -3,54 +3,53 @@
 	<H2>
 		<B>NEW EVENT +</B>
 	</h2>
-	
+
 	<P></P>
-	
+
 	<form action="/event" method="post">
-	
+
 	<img class="small-icon" src="/img/toople-logo-purple.svg"></img>
 		<label for="title"><b>Event name:</b></label>
-	<INPUT id="title" name="title"><P></P>
-	
-	
-	
+	<INPUT id="title" name="title"{{ with .title }} value="{{ . }}"{{ end }}><P></P>
+
+
+
 	<img class="small-icon" src="/images/date-time.svg"></img>
 		<label for="datetimepicker"><b>Date and Time:</b></label>
-	<input type="text" id="datetimepicker" name="date"><P></P>
-	
+	<input type="text" id="datetimepicker" name="date"{{ with .date }} value="{{ . }}"{{ end }}><P></P>
+
 	<img class="small-icon" src="/images/location.svg"></img>
 		<label for="location-user-input"><b>Location:</b></label>
-		<INPUT id="location-user-input" name="location"><P></P>
-	
-	
+		<INPUT id="location-user-input" name="location"{{ with .location }} value="{{ . }}"{{ end }}><P></P>
+
+
 	<img class="small-icon" src="/images/people.svg"></img>
 		<label for="threshold-user-input"><b>Threshold:</b></label>
-	<INPUT input type="number" min="2" placeholder="The miminum number of participants required" name="threshold" id="threshold-user-input">
-	
+	<INPUT input type="number" min="2" placeholder="The miminum number of participants required" name="threshold" id="threshold-user-input"{{ with .threshold }} value="{{ . }}"{{ end }}>
+
 	<p></p>
-	
+
 	<img class="small-icon" src="/images/circle.svg"></img>
 		<label for="invitedCircles"><b>Circles:</b></label>
-	<input name="circles" id="invitedCircles" type="text" placeholder="Circles you would like to invite" data-role="tagsinput">
+	<input name="circles" id="invitedCircles" type="text" placeholder="Circles you would like to invite" data-role="tagsinput"{{ with .circles }} value="{{ . }}"{{ end }}>
 	<p></p>
-	
+
 	<img class="small-icon" src="/images/information.svg"></img>
 		<label for="extra-info-user-input"><b>Extra Information:</b></label>
-	<INPUT name="info" id="extra-info-user-input">
+	<INPUT name="info" id="extra-info-user-input"{{ with .info }} value="{{ . }}"{{ end }}>
 		*This could be equipment which you want to make the invitees aware of or any other message.
-	
 
-	
+
+
 <section id="NotificationArea">
 	<input type="submit" class="submit-button" value="Create Event">
 </section>
-		
-	</form>	
-		
-		
+
+	</form>
+
+
 		</section>
-						
-						
 
 
-			
+
+

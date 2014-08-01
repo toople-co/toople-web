@@ -8,16 +8,16 @@ import (
 	"github.com/simleb/errors"
 )
 
-// strings contains the strings for all templates in all languages.
-var strings = LoadStrings()
+// defaultStrings contains the strings for all templates in all languages.
+var defaultStrings = LoadStrings()
 
 // A View is a map with string keys used to populate templates.
 type View map[string]interface{}
 
-// NewView creates a view containing the strings of a template in a given language.
+// NewView creates a view containing the defaultStrings of a template in a given language.
 func NewView(tmpl, lang string) View {
 	m := make(View)
-	for k, v := range strings[tmpl][lang] {
+	for k, v := range defaultStrings[tmpl][lang] {
 		m[k] = v
 	}
 	return m
@@ -57,7 +57,7 @@ func LoadStrings() map[string]map[string]map[string]string {
 func LoadStringsFile(filename string) map[string]string {
 	content, err := ioutil.ReadFile(filename)
 	if err != nil {
-		panic(errors.Stackf(err, "load strings: can't read file %q", filename))
+		panic(errors.Stack(err, "load strings: can't read file %q", filename))
 	}
 	re := regexp.MustCompile(`(?m)^(\w+)\r?\n(?:#.*\r?\n)*"((?:[^"\\]*|\\["\\bfnrt\/]|\\u[0-9a-f]{4})*)"`)
 	sm := re.FindAllStringSubmatch(string(content), -1)

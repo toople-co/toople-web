@@ -21,10 +21,10 @@ $(document).ready(function () {
 				}
 			})
 		}
-			
+
 	});
-	
-	
+
+
     $('li.alert-box a.dismiss-notification').click(function (e) {
         e.preventDefault;
         $(this).parent().fadeOut(function () {
@@ -49,8 +49,8 @@ $(document).ready(function () {
 				success: function(){
 					$('<li class="me">ME</li>').appendTo(y);
 				}
-				
-			});		
+
+			});
         }
     });
 
@@ -85,9 +85,9 @@ $(document).ready(function () {
         }
     });
 
-	
 
-	
+
+
 
     //Toggle Extra Info
 
@@ -116,7 +116,7 @@ $(document).ready(function () {
 
     // typeahead for circles input
 
-	
+
 	var substringMatcher = function() {
 	var circles = null;
 	if (!circles) {
@@ -126,13 +126,13 @@ $(document).ready(function () {
 	}
 	return function findMatches(q, cb) {
     var matches, substrRegex;
- 
+
 		// an array that will be populated with substring matches
 		matches = [];
- 
+
 		// regex used to determine if a string contains the substring `q`
 		substrRegex = new RegExp(q, 'i');
- 
+
 			// iterate through the pool of strings and for any string that
 			// contains the substring `q`, add it to the `matches` array
 			$.each(circles, function(i, str) {
@@ -142,13 +142,13 @@ $(document).ready(function () {
 				matches.push(str);
 				}
 			});
- 
+
 			cb(matches);
 		};
 	};
- 
+
 	//var states = [{"id":"c0clab","name":"Couzin Lab","slug":"couzinlab"},{"id":"c0kus","name":"Kuskus team","slug":"kuskus"}];
- 
+
 
 	var elt = $('input#invitedCircles');
 	elt.tagsinput(
@@ -156,7 +156,7 @@ $(document).ready(function () {
 		itemValue: 'id',
 		itemText: 'name',
 		freeInput: false
-	}	
+	}
 	);
 	elt.tagsinput('input').typeahead({
 		hint: true,
@@ -170,7 +170,7 @@ $(document).ready(function () {
 		this.tagsinput('add', datum);
 		this.tagsinput('input').typeahead('val', '');
 	}, elt));
-	
+
 /* 	var circles = new Bloodhound({
 		datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
 		queryTokenizer: Bloodhound.tokenizers.whitespace,
@@ -179,7 +179,7 @@ $(document).ready(function () {
 		}
 	});
 	circles.initialize();
-	
+
 	$('#invitedCircles').tagsinput({
 		itemValue: 'id',
 		itemText: 'name',
@@ -192,7 +192,7 @@ $(document).ready(function () {
 			source: [{"id":"c0clab","name":"Couzin Lab","slug":"couzinlab"},{"id":"c0kus","name":"Kuskus team","slug":"kuskus"}]
 		}
 	}); */
-	
+
         //mailchecker
 
         var domains = ['hotmail.com', 'gmail.com', 'aol.com'];
@@ -204,7 +204,7 @@ $(document).ready(function () {
         }
 
 
-        
+
 	$('#emailTestTest').on('blur', function() {
 		$(this).mailcheck({
 			domains: domains,                       // optional
@@ -220,18 +220,16 @@ $(document).ready(function () {
 	});
 
 
-        //Date Time Picker 
+	//Date Time Picker
 	var tag = $('#datetimepicker');
-    if (tag.exists()) {
-	
-        $('#datetimepicker').datetimepicker({
-            format: 'M d, Y – H:i'
+	if (tag.exists()) {
+		$('#datetimepicker').datetimepicker({
+			format: 'M d, Y – H:i'
+		});
+	}
 
-        });
-		}
-		
-		//add email 
-		
+		//add email
+
 	 $('a#clickToEditEmails').click(function () {
 	 console.log('dfsahu');
         if ($(this).html() == "+Add email") {
@@ -251,7 +249,7 @@ $(document).ready(function () {
 
         }
     });
-	
+
 	$('td img').click(function (e) {
         e.preventDefault;
         $(this).parent().parent().fadeOut(function () {
@@ -274,7 +272,7 @@ $(document).ready(function () {
 
 	$('#signup input#password').passStrengthify({minimum:8});
 	$('#settings input#password').passStrengthify({minimum:8});
-	
-	
+
+
 });
 

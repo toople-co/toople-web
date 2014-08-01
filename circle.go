@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"strings"
 
 	"github.com/martini-contrib/render"
 	"github.com/martini-contrib/sessions"
@@ -29,9 +30,9 @@ func GetNewCircle(r render.Render, s sessions.Session) {
 }
 
 type CircleForm struct {
-	Name   string   `form:"name"`
-	Slug   string   `form:"slug"`
-	Emails []string `form:"emails"`
+	Name   string `form:"name"`
+	Slug   string `form:"slug"`
+	Emails string `form:"emails"`
 }
 
 func PostCircle(r render.Render, f CircleForm, s sessions.Session, db *db.DB) {
@@ -40,7 +41,8 @@ func PostCircle(r render.Render, f CircleForm, s sessions.Session, db *db.DB) {
 		r.Redirect("/")
 		return
 	}
-	if db.NewCircle(f.Name, f.Slug, id.(string)) != nil {
+	circle, err := db.NewCircle(f.Name, f.Slug, id.(string))
+	if err != nil {
 		s.Set("error", "internal_error")
 		s.Set("circle_name", f.Name)
 		s.Set("circle_slug", f.Slug)
@@ -48,5 +50,9 @@ func PostCircle(r render.Render, f CircleForm, s sessions.Session, db *db.DB) {
 		r.Redirect("/new/circle")
 		return
 	}
+	for _, email := range strings.Split(f.Emails, ",") {
+		db.SendInvitation(circle, email)
+	}
+
 	r.Redirect("/")
 }
