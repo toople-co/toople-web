@@ -933,10 +933,11 @@ li.alert-box {
 
 .notice h3, .notice h4{
 	display: inline;
+	margin-bottom: 10px;
 }
 
-.notice h4{
-	font-weight: normal;
+.notice h4 {
+	font-weight: 300;
 	padding-left: 7px;
 }
 
@@ -1234,6 +1235,7 @@ a.whos-going{
 	border-color: red;
 	font-weight: bold;
 	margin-bottom: 100px;
+	font-weight: solid;
 }
 
 a.whos-going:before{
@@ -1348,6 +1350,7 @@ width: 13rem;
 	background-color: #1abc9c;
 	color: white;
 	border-radius: 5px;
+	padding: 1px 1px;
 }
 
 /* The new circle icon in the control center */
