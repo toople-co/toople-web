@@ -850,7 +850,7 @@ li.alert-box {
 	padding: 0.25rem;
 }
 
- .alert-box.warning p {
+ .alert-box.warning p, .alert-box.error p {
   margin: 0;
 }
 
@@ -887,7 +887,7 @@ li.alert-box {
 	margin-right: 3px;
 	margin-left: 3px;
  }
- 
+
  .alert-box.success {
   padding: 0.25rem;
   height: 1.25rem;
@@ -918,7 +918,7 @@ li.alert-box {
 	margin-right: 3px;
 	margin-left: 3px;
  }
- 
+
  .alert-box.warning p {
   margin: 0;
 }
@@ -1253,13 +1253,26 @@ a.whos-going:before{
 }
 
 
-input.joinevent-button{
+input.joinevent-button {
   color: #fff;
   background: #16a085;
   float: right;
   width: 5rem;
   margin-right: 2px;
-  }
+}
+
+span.joinevent-button{
+  color: #fff;
+  background: #2ecc71;
+  float: right;
+  width: 7rem;
+  margin-right: 2px;
+  text-align: center;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  font-weight: normal;
+  text-transform: none;
+}
 
 
 .tt-suggestions .tt-suggestion {
@@ -1309,9 +1322,9 @@ width: 13rem;
   cursor: pointer;
   margin-top: 1em;
   }
-  
+
 /*   control center */
-  
+
 #control-center{
 	width: 90%;
 	background-color: #d6dbdf;

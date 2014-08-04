@@ -1,7 +1,7 @@
 
 <section id="home">
-		<div id="feed-title">Notifications</div> 
-	
+		<div id="feed-title">Notifications</div>
+
 		{{ with .error}}
 			<p><strong style="color:#fcc;">{{ . }}</strong></p>
 		{{ end }}
@@ -9,6 +9,7 @@
 			<ul>
 			{{ range . }}
 				{{ with .Event }}
+					{{ if eq .Status "Pending" }}
 				<!-- An event notification -->
 
 					<li class="alert-box notice">
@@ -29,7 +30,7 @@
 							<input type="hidden" name="id" value="{{ .Id }}">
 							<input type="submit" class="joinevent-button" title="Join the event" value="✔︎ Join">
 						</form>
-						
+
 						<br><a href="#" class="whos-going" data-eventId="{{ .Id }}" >People Attending</a>
 						<div class="more-info">
 							<ul>
@@ -38,7 +39,47 @@
 
 					</li>
 
-					<!-- A success notification (if you joined a circle or created one) -->
+					{{ else if eq .Status "Confirmed" }}
+
+					<li class="alert-box notice">
+
+						<form action="/dismiss" method="post">
+							<input type="hidden" name="id" value="{{ .Id }}">
+							<input type="submit" class="dismiss-notification" title="Click to Dismiss" value="✕">
+						</form>
+						<hgroup>
+							<h3>{{ .Title }}</h3>
+							<h4>created by Example</h4>
+						</hgroup>
+						<b>Location: </b>{{ .Location }} &nbsp • &nbsp &nbsp <b>Date and Time: </b><time datetime="{{ .Date }}">{{ .PrettyDate }}</time>
+						<br><b>Threshold: </b>{{ .Threshold }}  &nbsp • &nbsp &nbsp  <b>Status: </b><em>{{ .Status }}</em>
+						<br><b>Extra Info:</b> {{ with .Info }}{{ . }}{{ end }}
+
+						<span class="joinevent-button">✔︎ Confirmed</span>
+
+						<br><a href="#" class="whos-going" data-eventId="{{ .Id }}" ><u>People Attending</u></a>
+
+						<div class="more-info">
+							<ul>
+							</ul>
+						</div>
+
+					</li>
+
+					{{ else if eq .Status "Cancelled" }}
+
+					<li class="alert-box error">
+
+						<form action="/dismiss" method="post">
+							<input type="hidden" name="id" value="{{ .Id }}">
+							<input type="submit" class="dismiss-notification" title="Click to Dismiss" value="✕">
+						</form>
+						<p><span>No Toople:( </span>Not enough people joined “<b>{{ .Title }}</b>”.</p>
+
+					</li>
+
+					{{ end }}
+
 				{{ end }}
 
 				{{ with .Member }}
@@ -66,21 +107,21 @@
 			<p>You have no new notifications or upcoming events :(</p>
 		{{ end }}
 			<hr>
-			
-			<div id="control-center"> 
-		
+
+			<div id="control-center">
+
 		<a id="control-new-event" href="/new/event">
 		New Event +
 		</a>
-		
+
 		<a id="control-new-circle" href="/new/circle">
 		New Circle +
 		</a>
-		
+
 		<a id="control-settings" href="/settings">
 		Settings
 		</a>
-		
+
 	</div>
 
 
