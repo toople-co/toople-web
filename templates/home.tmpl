@@ -20,7 +20,7 @@
 						</form>
 						<hgroup>
 							<h3>{{ .Title }}</h3>
-							<h4>created by Example</h4>
+							<h4>created by {{ .Creator.Name }}</h4>
 						</hgroup>
 						<b>Location: </b>{{ .Location }} &nbsp • &nbsp &nbsp <b>Date and Time: </b><time datetime="{{ .Date }}">{{ .PrettyDate }}</time>
 						<br><b>Threshold: </b>{{ .Threshold }}  &nbsp • &nbsp &nbsp  <b>Status: </b><em>{{ .Status }}</em>
@@ -49,7 +49,7 @@
 						</form>
 						<hgroup>
 							<h3>{{ .Title }}</h3>
-							<h4>created by Example</h4>
+							<h4>created by {{ .Creator.Name }}</h4>
 						</hgroup>
 						<b>Location: </b>{{ .Location }} &nbsp • &nbsp &nbsp <b>Date and Time: </b><time datetime="{{ .Date }}">{{ .PrettyDate }}</time>
 						<br><b>Threshold: </b>{{ .Threshold }}  &nbsp • &nbsp &nbsp  <b>Status: </b><em>{{ .Status }}</em>
