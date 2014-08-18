@@ -12,7 +12,6 @@ func GetSignup(r render.Render, s sessions.Session) {
 		return
 	}
 	view := NewView("signup", "en")
-	view["login_button"] = true
 	for _, p := range []string{"email", "name"} {
 		view[p] = s.Get("signup_" + p)
 		s.Delete("signup_" + p)

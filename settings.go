@@ -1,8 +1,6 @@
 package main
 
 import (
-	"fmt"
-
 	"github.com/martini-contrib/render"
 	"github.com/martini-contrib/sessions"
 )
@@ -14,7 +12,9 @@ func GetSettings(r render.Render, s sessions.Session) {
 	}
 	view := NewView("settings", "en")
 	name := s.Get("user_name")
+	view["Name"] = "Test Name"
+	view["Emails"] = []string{"test@email.com", "other@hotmail.com"}
 	view["loggedin"] = true
-	view["loggedin_text"] = fmt.Sprintf(view["loggedin_text"].(string), name.(string))
+	view["user_name"] = name
 	r.HTML(200, "settings", view)
 }

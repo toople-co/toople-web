@@ -1,0 +1,24 @@
+page
+# The HTML and CSS id of the page content wrapper
+"home"
+
+title_text
+# The title of the page
+"Notifications"
+
+topbar_newevent_button
+# The text on the new event button on the top bar.
+# It is replaced by an image on the button but it is also visible as a tooltip.
+"New event"
+
+dismiss_tooltip
+# The tooltip when hovering over a dismiss button
+"Click to Dismiss"
+
+join_tooltip
+# The tooltip when hovering over a join button
+"Join the event"
+
+empty_feed
+# The text that is displayed when there are no notifications
+"You have no new notifications or upcoming events :("

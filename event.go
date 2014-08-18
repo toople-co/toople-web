@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"strings"
 	"time"
 
@@ -26,7 +25,7 @@ func GetNewEvent(r render.Render, s sessions.Session) {
 	}
 	name := s.Get("user_name")
 	view["loggedin"] = true
-	view["loggedin_text"] = fmt.Sprintf(view["loggedin_text"].(string), name.(string))
+	view["user_name"] = name
 	r.HTML(200, "new_event", view)
 }
 

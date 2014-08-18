@@ -1,128 +1,138 @@
-
-<section id="home">
-		<div id="feed-title">Notifications</div>
-
-		{{ with .error}}
-			<p><strong style="color:#fcc;">{{ . }}</strong></p>
-		{{ end }}
-		{{ with .feed }}
+			<h2>{{ .title_text }}</h2>
+{{ $ := . }}
+{{ with .feed }}
 			<ul>
-			{{ range . }}
-				{{ with .Event }}
-					{{ if eq .Status "Pending" }}
-				<!-- An event notification -->
+	{{ range . }}
+		{{ with .Event }}
+			{{ if eq .Status "Pending" }}
+				<li class="notification event pending">
 
-					<li class="alert-box notice">
+					<form action="/dismiss" method="post">
+						<input type="hidden" name="id" value="{{ .Id }}">
+						<input type="submit" class="dismiss" title="{{ $.dismiss_tooltip }}" value="✕">
+					</form>
 
-						<form action="/dismiss" method="post">
-							<input type="hidden" name="id" value="{{ .Id }}">
-							<input type="submit" class="dismiss-notification" title="Click to Dismiss" value="✕">
-						</form>
-						<hgroup>
-							<h3>{{ .Title }}</h3>
-							<h4>created by {{ .Creator.Name }}</h4>
-						</hgroup>
-						<b>Location: </b>{{ .Location }} &nbsp • &nbsp &nbsp <b>Date and Time: </b><time datetime="{{ .Date }}">{{ .PrettyDate }}</time>
-						<br><b>Threshold: </b>{{ .Threshold }}  &nbsp • &nbsp &nbsp  <b>Status: </b><em>{{ .Status }}</em>
-						<br><b>Extra Info:</b> {{ with .Info }}{{ . }}{{ end }}
+					<hgroup>
+						<h3>{{ .Title }}</h3>
+						<span>created by {{ .Creator.Name }}</span>
+					</hgroup>
 
-						<form action="/join" method="post">
-							<input type="hidden" name="id" value="{{ .Id }}">
-							<input type="submit" class="joinevent-button" title="Join the event" value="✔︎ Join">
-						</form>
-
-						<br><a href="#" class="whos-going" data-eventId="{{ .Id }}" >People Attending</a>
-						<div class="more-info">
-							<ul>
-							</ul>
-						</div>
-
-					</li>
-
-					{{ else if eq .Status "Confirmed" }}
-
-					<li class="alert-box notice">
-
-						<form action="/dismiss" method="post">
-							<input type="hidden" name="id" value="{{ .Id }}">
-							<input type="submit" class="dismiss-notification" title="Click to Dismiss" value="✕">
-						</form>
-						<hgroup>
-							<h3>{{ .Title }}</h3>
-							<h4>created by {{ .Creator.Name }}</h4>
-						</hgroup>
-						<b>Location: </b>{{ .Location }} &nbsp • &nbsp &nbsp <b>Date and Time: </b><time datetime="{{ .Date }}">{{ .PrettyDate }}</time>
-						<br><b>Threshold: </b>{{ .Threshold }}  &nbsp • &nbsp &nbsp  <b>Status: </b><em>{{ .Status }}</em>
-						<br><b>Extra Info:</b> {{ with .Info }}{{ . }}{{ end }}
-
-						<span class="joinevent-button">✔︎ Confirmed</span>
-
-						<br><a href="#" class="whos-going" data-eventId="{{ .Id }}" ><u>People Attending</u></a>
-
-						<div class="more-info">
-							<ul>
-							</ul>
-						</div>
-
-					</li>
-
-					{{ else if eq .Status "Cancelled" }}
-
-					<li class="alert-box error">
-
-						<form action="/dismiss" method="post">
-							<input type="hidden" name="id" value="{{ .Id }}">
-							<input type="submit" class="dismiss-notification" title="Click to Dismiss" value="✕">
-						</form>
-						<p><span>No Toople:( </span>Not enough people joined “<b>{{ .Title }}</b>”.</p>
-
-					</li>
-
-					{{ end }}
-
+					<dl>
+						<dt>Location:</dt>
+						<dd>{{ .Location }}</dd>
+						<dt>Date and Time:</dt>
+						<dd><time datetime="{{ .Date }}">{{ .PrettyDate }}</time></dd>
+						<dt>Threshold:</dt>
+						<dd>{{ .Threshold }}</dd>
+						<dt>Status:</dt>
+						<dd>{{ .Status }}</dd>
+				{{ with .Info }}
+						<dt>Extra Info:</dt>
+						<dd>{{ . }}</dd>
 				{{ end }}
+					</dl>
 
-				{{ with .Member }}
-					{{ if .Me }}
-						<li class="alert-box success">
-							<form action="/dismiss" method="post">
-								<input type="hidden" name="id" value="{{ .Id }}">
-								<input type="submit" class="dismiss-notification" title="Click to Dismiss" value="✕">
-							</form>
-							<p><span>You're in!</span> You have joined “<b>{{ .Circle.Name }}</b>” circle.</p>
-						</li>
-					{{ else }}
-						<li class="alert-box warning">
-							<form action="/dismiss" method="post">
-								<input type="hidden" name="id" value="{{ .Id }}">
-								<input type="submit" class="dismiss-notification" title="Click to Dismiss" value="✕">
-							</form>
-							<p><span>Alert:</span> <b>{{ .User.Name }}</b> has joined your circle “<b>{{ .Circle.Name }}</b>”.</p>
-						</li>
-					{{ end }}
+					<form action="/join" method="post">
+						<input type="hidden" name="id" value="{{ .Id }}">
+						<input type="submit" class="join-event" title="{{ $.join_tooltip }}" value="✔︎ Join">
+					</form>
+
+					<details>
+						<summary>People Attending</summary>
+						<ul>
+
+						</ul>
+					</details>
+
+				</li>
+
+			{{ else if eq .Status "Confirmed" }}
+
+				<li class="notification event confirmed">
+
+					<form action="/dismiss" method="post">
+						<input type="hidden" name="id" value="{{ .Id }}">
+						<input type="submit" class="dismiss" title="{{ $.dismiss_tooltip }}" value="✕">
+					</form>
+
+					<hgroup>
+						<h3>{{ .Title }}</h3>
+						<span>created by {{ .Creator.Name }}</span>
+					</hgroup>
+
+					<dl>
+						<dt>Location:</dt>
+						<dd>{{ .Location }}</dd>
+						<dt>Date and Time:</dt>
+						<dd><time datetime="{{ .Date }}">{{ .PrettyDate }}</time></dd>
+						<dt>Threshold:</dt>
+						<dd>{{ .Threshold }}</dd>
+						<dt>Status:</dt>
+						<dd>{{ .Status }}</dd>
+				{{ with .Info }}
+						<dt>Extra Info:</dt>
+						<dd>{{ . }}</dd>
 				{{ end }}
+					</dl>
+
+					<details>
+						<summary>People Attending</summary>
+						<ul>
+
+						</ul>
+					</details>
+
+				</li>
+
+			{{ else if eq .Status "Cancelled" }}
+
+				<li class="notification event cancelled">
+
+					<form action="/dismiss" method="post">
+						<input type="hidden" name="id" value="{{ .Id }}">
+						<input type="submit" class="dismiss" title="{{ $.dismiss_tooltip }}" value="✕">
+					</form>
+
+					<h3>No Toople :(</h3>
+					<p>Not enough people joined “<strong>{{ .Title }}</strong>”.</p>
+
+				</li>
+
 			{{ end }}
-			</ul>
-		{{ else }}
-			<p>You have no new notifications or upcoming events :(</p>
 		{{ end }}
-			<hr>
 
-			<div id="control-center">
+		{{ with .Member }}
+			{{ if .Me }}
 
-		<a id="control-new-event" href="/new/event">
-		New Event +
-		</a>
+				<li class="notification join me">
+					<form action="/dismiss" method="post">
+						<input type="hidden" name="id" value="{{ .Id }}">
+						<input type="submit" class="dismiss" title="{{ $.dismiss_tooltip }}" value="✕">
+					</form>
 
-		<a id="control-new-circle" href="/new/circle">
-		New Circle +
-		</a>
+					<h3>You're in!</h3>
+					<p>You have joined “<strong>{{ .Circle.Name }}</strong>” circle.</p>
 
-		<a id="control-settings" href="/settings">
-		Settings
-		</a>
+				</li>
 
-	</div>
+			{{ else }}
 
+				<li class="notification join">
+					<form action="/dismiss" method="post">
+						<input type="hidden" name="id" value="{{ .Id }}">
+						<input type="submit" class="dismiss" title="{{ $.dismiss_tooltip }}" value="✕">
+					</form>
 
-		</section>
+					<h3>Alert:</h3>
+					<p><strong>{{ .User.Name }}</strong> has joined your circle “<strong>{{ .Circle.Name }}</strong>”.</p>
+
+				</li>
+
+			{{ end }}
+		{{ end }}
+	{{ end }}
+			</ul>
+
+{{ else }}
+			<p>{{ .empty_feed }}</p>
+{{ end }}

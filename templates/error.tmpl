@@ -1,3 +1,5 @@
-		<section id="error">
-			{{ with .error}}<p><strong style="color:#fcc;">{{ . }}</strong></p>{{ end }}
-		</section>
+{{ with .error }}
+			<p>{{ . }}</p>
+{{ else }}{{/* A default error in english is hardcoded as a catch all. */}}
+			<p>Sorry, there was an error :(</p>
+{{ end }}

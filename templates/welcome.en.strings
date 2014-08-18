@@ -1,6 +1,14 @@
+page
+# The HTML and CSS id of the page content wrapper
+"welcome"
+
 description
 # The content of the description meta tag
 "The easiest way to schedule events requiring a minimum number of participants"
+
+topbar_login_button
+# The text on the log in button in the top bar
+"Log in"
 
 subhead
 # The short introductory text
@@ -16,6 +24,4 @@ signup_button
 
 signup_comment
 # The text next to the sign up button explaining the different sign up options
-"Psst… You don't have to create yet another password to sign up.
-				You can use an OpenID like Google, Twitter and Facebook.
-				You can even sign up by email without creating a password."
+"You can use Google, Twitter or Facebook to signup. Did we mention it's completely free?"

@@ -1,55 +1,25 @@
-		<section id="new-event">
+			<h2>{{ .title_text }}</h2>
 
-	<H2>
-		<B>NEW EVENT +</B>
-	</h2>
+			<form action="/event" method="post">
 
-	<P></P>
+				<label for="new-event-title">{{ .event_name_label }}</label>
+				<input type="text" id="new-event-title" name="title" {{ with .title }}value="{{ . }}"{{ end }} autofocus required>
 
-	<form action="/event" method="post">
+				<label for="new-event-date">{{ .datetime_label }}</label>
+				<input type="datetime-local" id="new-event-date" name="date" {{ with .date }}value="{{ . }}"{{ end }} required>
 
-	<img class="small-icon" src="/img/toople-logo-purple.svg"></img>
-		<label for="title"><b>Event name:</b></label>
-	<INPUT id="title" name="title"{{ with .title }} value="{{ . }}"{{ end }}><P></P>
+				<label for="new-event-location">{{ .location_label }}</label>
+				<input type="text" id="new-event-location" name="location" {{ with .location }}value="{{ . }}"{{ end }} required>
 
+				<label for="new-event-threshold">{{ .threshold_label }}</label>
+				<input type="number" id="new-event-threshold" name="threshold" {{ with .threshold }}value="{{ . }}"{{ end }} placeholder="{{ .threshold_placeholder }}" min="1" required>
 
+				<label for="new-event-circles">{{ .circles_label }}</label>
+				<input type="text" id="new-event-circles" name="circles" {{ with .circles }}value="{{ . }}"{{ end }} placeholder="{{ .circles_placeholder }}" data-role="tagsinput" required>
 
-	<img class="small-icon" src="/images/date-time.svg"></img>
-		<label for="datetimepicker"><b>Date and Time:</b></label>
-	<input type="text" id="datetimepicker" name="date"{{ with .date }} value="{{ . }}"{{ end }}><P></P>
+				<label for="new-event-info">{{ .extra_info_label }}</label>
+				<textarea id="new-event-info" name="info" placeholder="{{ .extra_info_comment }}">{{ with .info }}{{ . }}{{ end }}</textarea>
 
-	<img class="small-icon" src="/images/location.svg"></img>
-		<label for="location-user-input"><b>Location:</b></label>
-		<INPUT id="location-user-input" name="location"{{ with .location }} value="{{ . }}"{{ end }}><P></P>
+				<input type="submit" value="{{ .submit }}">
 
-
-	<img class="small-icon" src="/images/people.svg"></img>
-		<label for="threshold-user-input"><b>Threshold:</b></label>
-	<INPUT input type="number" min="2" placeholder="The miminum number of participants required" name="threshold" id="threshold-user-input"{{ with .threshold }} value="{{ . }}"{{ end }}>
-
-	<p></p>
-
-	<img class="small-icon" src="/images/circle.svg"></img>
-		<label for="invitedCircles"><b>Circles:</b></label>
-	<input name="circles" id="invitedCircles" type="text" placeholder="Circles you would like to invite" data-role="tagsinput"{{ with .circles }} value="{{ . }}"{{ end }}>
-	<p></p>
-
-	<img class="small-icon" src="/images/information.svg"></img>
-		<label for="extra-info-user-input"><b>Extra Information:</b></label>
-	<INPUT name="info" id="extra-info-user-input"{{ with .info }} value="{{ . }}"{{ end }}>
-		*This could be equipment which you want to make the invitees aware of or any other message.
-
-
-
-<section id="NotificationArea">
-	<input type="submit" class="submit-button" value="Create Event">
-</section>
-
-	</form>
-
-
-		</section>
-
-
-
-
+			</form>

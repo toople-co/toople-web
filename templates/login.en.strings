@@ -1,10 +1,18 @@
+page
+# The HTML and CSS id of the page content wrapper
+"login"
+
 description
 # The default description to be used in the meta tags
 "Log into your Toople account"
 
+topbar_signup_button
+# The text on the sign up button in the top bar
+"Sign up"
+
 email_section
 # The title of the section for logging in with email and password or email only
-"You can log in with an email address and a password or just by email:"
+"Enter your email address and password to log in:"
 
 email_label
 # The label text for the email input field (visually hidden)
@@ -16,23 +24,15 @@ email_placeholder
 
 password_label
 # The label text for the password input field (visually hidden)
-"Password (optional)"
+"Password"
 
 password_placeholder
 # The placeholder text for the password input field
 "Password"
 
-password_comment
-# The text displayed right after the password field explaining why a password is optional
-"If you don't enter a password, you will need to click a on link that we will send you by email to log in."
-
 email_submit
 # The text on the submit button for the email and password section
 "Log in"
-
-openid_section
-# The title of the section for logging in with an OpenID
-"Or you can use any of the following services to log in:"
 
 internal_error
 # The error displayed when the the app is unavailable

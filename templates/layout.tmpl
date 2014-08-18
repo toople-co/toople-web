@@ -11,43 +11,46 @@
 		<link rel="stylesheet" href="/css/jquery.datetimepicker.css">
 		<link rel="stylesheet" href="/css/main.css">
 		<script src="/js/modernizr-2.8.0.min.js"></script>
-		
+
 	</head>
 	<body>
 
-	<!-- header including the top bar etc. -->
-
+		<!-- main header -->
 		<header id="topbar">
 			<h1><a href="/">{{ .brand }}</a></h1>
-			{{ with .login_button }}<a href="/login" role="button">Log in</a>{{ end }}
-			{{ with .loggedin }}<a href="/new/event" role="top-bar-button"><img src="/images/newevent.svg" id="new-event-topbar"></img></a>{{ end }}
+			{{ with .topbar_login_button }}<a href="/login" role="button">Log in</a>{{ end }}
+			{{ with .topbar_signup_button }}<a href="/signup" role="button">{{ . }}</a>{{ end }}
+			{{ with .topbar_newevent_button }}<a href="/new/event" role="button" title="{{ . }}">{{ . }}</a>{{ end }}
 		</header>
 
-		<!-- main content of each page -->
-
-		{{ yield }}
-
-		<!-- footer -->
+		<!-- main content -->
+		<main role="main" id="{{ .page }}"{{ with .loggedin }} class="logged-in"{{ end }}>
+			{{ yield }}
+		</main>
 
 		{{ if .loggedin }}
-		<section class="loggedIn">
-			<strong>{{ html .loggedin_text }}</strong>
-			<p><a href="/">Notifications</a> • <a href="/settings">Settings</a> • <a href="/logout">{{ .logout_button }}</a></p>
-		</section>
+		<!-- logged in footer -->
+		<footer id="logged-in">
+			<p>{{ printf .loggedin_text .user_name }}</p>
+			<nav>
+				<a href="/settings">{{ .settings_text }}</a>
+				<a href="/logout">{{ .logout_text }}</a>
+			</nav>
+		</footer>
 		{{ end }}
 
+		<!-- main footer -->
 		<footer id="footer">
-			<ul>
-
-				<li><a href="/about">{{ .about }}</a></li>
-				<li><a href="mailto:admin@toople.co">{{ .contact }}</a></li>
-				<li><a href="http://twitter.com/toople_">Follow us on Twitter</a></li>
-				<!-- <li><a href="http://github.com/toople-co">{{ .source }}</a></li> -->
-
-				<p><img src="/img/toople-logo.svg" width="30px" height="30px">
-				<p>
-			</ul>
+			<nav>
+				<ul>
+					<li><a href="/about">{{ .about }}</a></li>
+					<li><a href="mailto:admin@toople.co">{{ .contact }}</a></li>
+					<li><a href="http://twitter.com/toople_">{{ .twitter }}</a></li>
+					<!-- <li><a href="http://github.com/toople-co">{{ .source }}</a></li> -->
+				</ul>
+			</nav>
 		</footer>
+
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 		<script>window.jQuery || document.write('<script src="/js/jquery.min.js"><\/script>')</script>
 		<script src="/js/mailcheck.js"></script>
@@ -56,7 +59,7 @@
 		<script src="/js/typeahead.bundle.js"></script>
 		<script src="/js/awesomeScript.js"></script>
 		<script src="/js/bootstrap-tagsinput.js"></script>
-		<script src="/js/jquery.passstrength.min.js"></script> 
-		
+		<script src="/js/jquery.passstrength.min.js"></script>
+
 	</body>
 </html>

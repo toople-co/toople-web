@@ -1,27 +1,16 @@
-<section id="settings">
+			<h2>{{ .title_text }}</h2>
 
-	<H2><B>NEW Circle +</B></h2>
+			<form action="/circle" method="post">
 
-	<form action="/circle" method="post">
-		<div id="userName">
-			<label for="circle-name">{{ .circle_label_name }}</label>
-			<input id="circle-name" name="name"{{ with .name }} value="{{ . }}"{{ end }}>
-		</div>
-				<br>
+				<label for="new-circle-name">{{ .circle_name_label }}</label>
+				<input type="text" id="new-circle-name" name="name"{{ with .name }} value="{{ . }}"{{ end }} autofocus required>
 
-		<div id="Emails">
-			<label for="emailsUserInput">{{ .email_label_name }}</label>
-			<input id="emailsUserInput" data-role="tagsinput" placeholder="Emails of the people you wish to invite to your circle" name="emails"{{ with .emails }} value="{{ . }}"{{ end }}>
-		</div>
-				<br>
+				<label for="new-circle-emails">{{ .email_label }}</label>
+				<input type="email" id="new-circle-emails" name="emails" {{ with .emails }}value="{{ . }}"{{ end }} placeholder="{{ .emails_placeholder }}" multiple data-role="tagsinput">
 
-		<div id="circle-id-section">
-			<label for="circle-id">{{ .slug_label_name }} </label>
-			<input id="circle-id" placeholder="An ID is the unique name for your circle. No spaces allowed!" name="slug"{{ with .slug }} value="{{ . }}"{{ end }}>
-		</div>
-		<p>
-		<input class="submit-button" type="submit" value="{{.submit_button}}">
-	</form>
+				<label for="new-circle-slug">{{ .slug_label }} </label>
+				<input type="text" id="new-circle-slug" name="slug" {{ with .slug }}value="{{ . }}"{{ end }} placeholder="{{ .slug_placeholder }}" pattern="[a-zA-Z0-9](-?[a-zA-Z0-9]+)*" required>
 
+				<input type="submit" value="{{ .submit }}">
 
-</section>
+			</form>

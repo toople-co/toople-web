@@ -1,22 +1,40 @@
+page
+# The HTML and CSS id of the page content wrapper
+"new-circle"
+
+title_text
+# The title of the page
+"New circle"
+
 description
 # The default description to be used in the meta tags
 "Create a new circle on Toople"
 
-submit_button
-# create circle+ (text for the button)
-"Create Circle+"
+topbar_newevent_button
+# The text on the new event button on the top bar.
+# It is replaced by an image on the button but it is also visible as a tooltip.
+"New event"
 
-circle_label_name
-# Circle Name input field label
+circle_name_label
+# The text on the label for the circle's name
 "Circle Name:"
 
-email_label_name
-# Members emails input field label
+email_label
+# The text on the label for the circle's list of emails of invited persons
 "Members Emails:"
 
-slug_label_name
-# slug input field label
+emails_placeholder
+# The placeholder text for the circle's list of emails of invited persons
+"Emails of the people you wish to invite to your circle"
+
+slug_label
+# The text on the label for the circle's slug
 "Circle ID:"
 
+slug_placeholder
+# The placeholder text for the circle's slug
+"An ID is the unique name for your circle. No spaces allowed!"
 
-
+submit
+# The text on the submit button
+"Create Circle"

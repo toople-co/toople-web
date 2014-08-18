@@ -1,10 +1,18 @@
+page
+# The HTML and CSS id of the page content wrapper
+"signup"
+
 description
 # The default description to be used in the meta tags
 "Sign up for a Toople account and start scheduling events right away!"
 
+topbar_login_button
+# The text on the log in button in the top bar
+"Log in"
+
 email_section
 # The title of the section for logging in with email and password
-"You can sign up with an email address and a password or just by email:"
+"Enter your email address, your name and a password to sign up:"
 
 email_label
 # The label text for the email input field (visually hidden)
@@ -42,17 +50,13 @@ email_submit
 # The text on the submit button for the email and password section
 "Sign up"
 
-openid_section
-# The title of the section for logging in with an OpenID
-"Or you can sign up using any of the following services:"
-
 internal_error
 # The error displayed when the the app is unavailable
 "An error has occurred."
 
 email_exists_error
 # The error displayed when the email is already used
-"This email is already being used by someone. Are you trying to login?"
+"This email is already being used by someone. Are you trying to log in?"
 
 bad_email_error
 # The error displayed when the provided email is not an email
@@ -64,5 +68,5 @@ name_error
 
 password_error
 # The error displayed when the password sucks
-"This password is terrible. If you suck at choosing strong passwords, why don't you try to sign up without a password or using an OpenID instead?"
+"This password sucks. Please use at least 8 characters."
 

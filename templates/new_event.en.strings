@@ -1,3 +1,56 @@
+page
+# The HTML and CSS id of the page content wrapper
+"new-event"
+
+title_text
+# The title of the page
+"New event"
+
 description
 # The default description to be used in the meta tags
 "Create a new event on Toople"
+
+topbar_newevent_button
+# The text on the new event button on the top bar.
+# It is replaced by an image on the button but it is also visible as a tooltip.
+"New event"
+
+event_name_label
+# The text on the label for the event's name
+"Event name:"
+
+datetime_label
+# The text on the label for the event's date and time
+"Date and Time:"
+
+location_label
+# The text on the label for the event's location
+"Location:"
+
+threshold_label
+# The text on the label for the event's threshold
+"Threshold:"
+
+threshold_placeholder
+# The placeholder text for the event's threshold
+"The miminum number of participants required"
+
+circles_label
+# The text on the label for the event's circles
+"Circles:"
+
+circles_placeholder
+# The placeholder text for the event's circles
+"Circles you would like to invite"
+
+extra_info_label
+# The text on the label for the event's extra information
+"Extra Information:"
+
+extra_info_comment
+# The text that explains what is the extra information field
+"This could be equipment which you want to make the invitees aware of or any other message."
+
+submit
+# The text on the submit button
+"Create Event"

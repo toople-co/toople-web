@@ -1,3 +1,16 @@
+page
+# The HTML and CSS id of the page content wrapper
+"settings"
+
+title_text
+# The title of the page
+"Settings"
+
 description
 # The default description to be used in the meta tags
 "View or change the settings of your Toople account"
+
+topbar_newevent_button
+# The text on the new event button on the top bar.
+# It is replaced by an image on the button but it is also visible as a tooltip.
+"New event"
