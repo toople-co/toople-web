@@ -28,22 +28,11 @@ $(document).ready(function () {
 			var id = notification.find('input[name=id]').val();
 
 			if (notification.hasClass('event')) {
-
-				// Get list of participant (just once)
-				// FIXME: this can be done server side
-				var list = notification.children('details').children('ul');
-				if (list.children(':not(.me)').length === 0) {
-					$.get('/participants/' + id, function(p) {
-						for(var i in p) {
-							$('<li>' + p[i].name + '</li>').appendTo(list);
-						}
-					});
-				}
-
 				// Join event
 				// FIXME: add name instead of ME
 				// FIXME: test if threshold is reached
 				// FIXME: animation / progress indicator
+				var list = notification.children('details').children('ul');
 				notification.find('input.join-event').click(function(e) {
 					e.preventDefault();
 					var button = $(this);

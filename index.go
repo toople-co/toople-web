@@ -10,7 +10,7 @@ func GetIndex(r render.Render, s sessions.Session, db *db.DB) {
 	id := s.Get("user_id")
 	name := s.Get("user_name")
 	if id != nil && name != nil {
-		feed, err := db.GetFeed(id.(string))
+		notifications, err := db.GetNotifications(id.(string))
 		if err != nil {
 			view := NewView("error", "en")
 			view["error"] = view["internal_error"]
@@ -20,7 +20,7 @@ func GetIndex(r render.Render, s sessions.Session, db *db.DB) {
 		view := NewView("home", "en")
 		view["loggedin"] = true
 		view["user_name"] = name
-		view["feed"] = feed
+		view["notifications"] = notifications
 		r.HTML(200, "home", view)
 		return
 	}

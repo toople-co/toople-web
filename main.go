@@ -67,7 +67,6 @@ func main() {
 	m.Post("/join", binding.Bind(IdForm{}), PostJoin)
 
 	// Ajax api
-	m.Get("/participants/:event", GetParticipants)
 	m.Get("/circles", GetCircles)
 
 	// 404: Not found

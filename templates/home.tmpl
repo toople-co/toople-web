@@ -1,6 +1,6 @@
 			<h2>{{ .title_text }}</h2>
 {{ $ := . }}
-{{ with .feed }}
+{{ with .notifications }}
 			<ul>
 	{{ range . }}
 		{{ with .Event }}
@@ -40,7 +40,9 @@
 					<details>
 						<summary>People Attending</summary>
 						<ul>
-
+				{{ range .Participants }}
+							<li>{{ .Name }}</li>
+				{{ end }}
 						</ul>
 					</details>
 
@@ -78,7 +80,9 @@
 					<details>
 						<summary>People Attending</summary>
 						<ul>
-
+				{{ range .Participants }}
+							<li>{{ .Name }}</li>
+				{{ end }}
 						</ul>
 					</details>
 
